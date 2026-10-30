@@ -1,0 +1,85 @@
+{
+  "model_id": "gemma-4-31b",
+  "endpoint": "evren",
+  "api_model": "gemma-4-31b",
+  "probed_at": "2026-10-10T17:39:14.107+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "nothink": {
+      "available": true,
+      "params": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "evidence": {
+        "rejected": false,
+        "reasoning_tokens": [
+          0,
+          0
+        ],
+        "reasoning_tokens_exact": true,
+        "reasoning_chars": [
+          0,
+          0
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": null,
+        "reasoning_fields": []
+      }
+    }
+  },
+  "log": [
+    "default mode thinks: True (reasoning field(s): ['reasoning'])",
+    "nothink via {'chat_template_kwargs': {'enable_thinking': False}}",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "google/gemma-4-31b",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": true,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      215,
+      281
+    ],
+    "reasoning_tokens_exact": true,
+    "reasoning_chars": [
+      621,
+      780
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": "reasoning",
+    "reasoning_fields": [
+      "reasoning"
+    ]
+  },
+  "reasoning_field": "reasoning",
+  "reasoning_format": [
+    "reasoning"
+  ],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 7,
+  "probe_seconds": 9.1
+}

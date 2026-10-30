@@ -1,0 +1,20 @@
+{
+ "plan": "guard_policy",
+ "plan_hash": "193bc2f8be09295ff202dc4c04997f0b72b5d2330372a6f3099c4d7a4e882282",
+ "n_requests": 5,
+ "n_items": 5,
+ "written_utc": "2026-10-10T18:01:57+00:00",
+ "suite": "guard",
+ "limit": 5,
+ "repeats": 1,
+ "plan_seed": "trbench-v1",
+ "profile": "greedy",
+ "max_tokens": 2048,
+ "data_sha256": "c979f0ec93efcc972345038a385850bb59543b587e2eef8293de8f8e16506a26",
+ "format": "policy_json",
+ "decoding": {
+  "greedy": {
+   "temperature": 0.0
+  }
+ }
+}

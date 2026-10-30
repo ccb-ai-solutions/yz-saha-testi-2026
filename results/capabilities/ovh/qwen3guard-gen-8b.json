@@ -1,0 +1,23 @@
+{
+  "model_id": "qwen3guard-gen-8b",
+  "endpoint": "ovh",
+  "api_model": "Qwen3Guard-Gen-8B",
+  "probed_at": "2026-10-10T17:44:58.549+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    }
+  },
+  "log": [
+    "task 'guard': parameter negotiation only"
+  ],
+  "available": true,
+  "served_model": "Qwen3Guard-Gen-8B",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "probe_requests": 1,
+  "probe_seconds": 0.4
+}

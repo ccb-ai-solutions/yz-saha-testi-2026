@@ -1,0 +1,49 @@
+{
+  "birim": {
+    "type": "choice",
+    "instructions": "Talebi hangi birim ele almalı?",
+    "criteria": {
+      "fatura": "Fatura tutarı ve kalemleri, ödeme ve tahsilat, ücret iadesi veya mahsubu, otomatik ödeme ve fatura gönderim tercihleri; ödeme veya tahsilat kaynaklı hat kısıtlamaları da buraya girer.",
+      "teknik": "Bağlantı, hız ve kesinti sorunları; modem ve cihaz yapılandırması; mobil veri, bulut santral ve yazılım uygulamalarındaki hatalar; ürün kullanımına dair teknik sorular.",
+      "satis": "Yeni ürün, hat, paket, cihaz veya lisans satın alma; paket yükseltme ve değiştirme; fiyat, kampanya, teklif ve altyapı uygunluğu soruları. Daha uygun teklif isteyen mevcut müşteri de buraya girer.",
+      "kargo": "Cihaz gönderimi ve teslimatı, kurye ve kargo takibi, teslimat adresi değişikliği, hasarlı, kaybolan veya yanlış adrese giden gönderiler ve iade edilecek cihazın gönderimi.",
+      "iptal": "Ana aboneliğin, hattın, ek paketin, eklentinin veya siparişin iptali; fesih, cayma hakkı, otomatik yenilemenin kapatılması ve iptal sürecine dair talepler.",
+      "diger": "Yukarıdakilere girmeyen talepler: kayıp/çalıntı ve dolandırıcılık bildirimleri, kişisel veri (KVKK) başvuruları ve veri ihlali bildirimleri, iletişim bilgisi güncelleme, personel şikâyeti veya teşekkürü, iş ve staj başvuruları, saha ekibinin kimliğini doğrulama."
+    }
+  },
+  "aciliyet": {
+    "type": "score",
+    "instructions": "Talep ne kadar acil?",
+    "criteria": ["acil değil", "yakında ele alınmalı", "kritik"]
+  },
+  "iptal_riski": {
+    "type": "noul",
+    "instructions": "Müşteri hizmeti bırakmakla, aboneliği iptal etmekle veya rakibe geçmekle tehdit ediyor mu?"
+  },
+  "label_guide": {
+    "birim": {
+      "fatura": "Müşterinin asıl derdi para: fatura tutarı, ücret kalemi, tahsilat, ödeme veya iade. Ödeme alınmadığı için kısıtlanan hat da faturaya aittir, çünkü çözüm ödemenin eşleştirilmesidir.",
+      "teknik": "Hizmet çalışmıyor, yavaş ya da hatalı çalışıyor veya müşteri ürünü nasıl kullanacağını soruyor. Arızanın giderilmesi isteniyorsa, mesajda iptal tehdidi olsa bile birim tekniktir.",
+      "satis": "Müşteri bir şey satın almak, paketini yükseltmek ya da fiyat, kampanya veya teklif öğrenmek istiyor. 'Daha ucuz paket verin, yoksa giderim' türü elde tutma talepleri de satışa gider.",
+      "kargo": "Fiziksel bir gönderinin yolculuğu: teslimat, gecikme, adres, kurye, hasar veya kayıp. Cihazın kargoyla iadesi de buraya girer.",
+      "iptal": "Müşteri bir iptal veya fesih işlemi talep ediyor: ana abonelik, tek bir hat, ek paket, eklenti ya da sipariş. Yalnızca iptalden söz edilmesi veya iptal tehdidi bu birimi seçtirmez.",
+      "diger": "Yukarıdaki beş birimin hiçbirine uymayan talepler: güvenlik ve dolandırıcılık bildirimleri, KVKK, bilgi güncelleme, personel geri bildirimi, iş başvurusu gibi."
+    },
+    "aciliyet": {
+      "0": "Acil değil: bilgi talebi, öneri, teşekkür, ileri tarihli bir işlem ya da beklemenin müşteriye somut bir zararı olmayan durum.",
+      "1": "Yakında ele alınmalı: müşteriyi olumsuz etkileyen ama hizmeti tamamen durdurmayan sorunlar (hatalı ücret, geciken kargo, kısmi yavaşlık) ya da bu ay içinde yetişmesi gereken işlemler (bu hafta, fatura kesiminden önce, ay sonuna kadar gibi). Kanuni yanıt süresi işleyen başvurular (örneğin KVKK) ve zarar doğurmamış bir dolandırıcılık girişiminin bildirimi de buraya girer.",
+      "2": "Kritik, aynı gün müdahale gerekir: hizmet tamamen kesik veya müşterinin işi durmuş; müşteriyi şu an etkileyen bir güvenlik ihlali, dolandırıcılık ya da onaysız büyük tutarlı tahsilat var; veya bugün dolan ve kaçırılırsa geri dönülemeyecek bir süre söz konusu."
+    },
+    "iptal_riski": {
+      "0": "Müşteri ayrılma, iptal etme veya rakibe geçme niyetini ya da tehdidini dile getirmiyor. Ana ilişki sürerken yalnızca bir ek paketin, ek hattın, eklentinin veya tek bir siparişin iptali ile iptalden yalnızca söz edilen durumlar ('aboneliğimi iptal etmedim' gibi) 0'dır.",
+      "1": "Müşteri hizmeti bırakacağını, ana aboneliğini iptal edeceğini veya rakibe geçeceğini açıkça ya da koşula bağlı olarak söylüyor ('düzeltmezseniz geçerim', 'taahhüdüm bitince ayrılacağım'). Ana aboneliğin veya hizmetin tamamının doğrudan iptal ya da fesih talebi de 1'dir."
+    },
+    "genel_kurallar": [
+      "Birden fazla konu içeren mesajlarda birim, müşterinin asıl talebine göre seçilir: açıkça 'asıl', 'öncelikle', 'en acil' dediği ya da çözülmesini istediği konu. Diğer konular birimi değiştirmez.",
+      "Bir şikâyetin içindeki ayrılma tehdidi birimi değiştirmez; yalnızca iptal_riski'ni 1 yapar (ör. fatura itirazı ve 'geçerim' → birim fatura, iptal_riski 1).",
+      "Aciliyet, ses tonuna değil somut etkiye ve süreye göre belirlenir; büyük harf, ünlem veya öfke tek başına aciliyeti artırmaz.",
+      "Alaycı ifadeler gerçek anlamlarıyla değerlendirilir ('harika hizmet' bir şikâyettir).",
+      "Bugünün tarihi etiketleme için 9 Ekim 2026'dır."
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+variant,token_param,max_tokens,temperature,top_p,mode_params,distinct_param_sets,flags
+deepseek-v4-flash:default,max_tokens,8192,0.6,0.95,,1,ok
+deepseek-v4.1-flash:default,max_tokens,8192,0.6,0.95,,1,ok
+deploy-chat:default,max_tokens,8192,0.6,0.95,,2,ok
+gemma-4-31b:default,max_tokens,8192,0.6,0.95,,1,ok
+glm-5.3:default,max_tokens,8192,0.6,0.95,,1,ok
+gpt-oss-120b:default,max_tokens,8192,0.6,0.95,,1,ok
+gpt-oss-20b:default,max_tokens,8192,0.6,0.95,,1,ok
+magistral-small-1.2:default,max_tokens,8192,0.6,0.95,"{""tool_call_ids"": ""mistral (9 letters/digits)""}",2,ok
+mimo-v2.6-pro:default,max_tokens,8192,0.6,0.95,,1,ok
+nemotron-3-super:default,max_tokens,8192,0.6,0.95,,1,ok
+qwen3-vl-30b:default,max_tokens,8192,0.6,0.95,,1,ok
+qwen3.5-397b:default,max_tokens,8192,0.6,0.95,,1,ok
+qwen3.5-9b:default,max_tokens,8192,0.6,0.95,,1,ok
+qwen3.8-27b:default,max_tokens,8192,0.6,0.95,,1,ok
+qwen3.8-flash-next:default,max_tokens,8192,0.6,0.95,,1,ok

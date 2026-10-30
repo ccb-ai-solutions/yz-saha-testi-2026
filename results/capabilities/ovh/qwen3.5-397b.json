@@ -1,0 +1,98 @@
+{
+  "model_id": "qwen3.5-397b",
+  "endpoint": "ovh",
+  "api_model": "Qwen3.5-397B-A17B",
+  "probed_at": "2026-10-11T05:39:18.809+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "nothink": {
+      "available": true,
+      "params": {
+        "reasoning_effort": "none"
+      },
+      "evidence": {
+        "rejected": false,
+        "reasoning_tokens": [
+          0,
+          0
+        ],
+        "reasoning_tokens_exact": false,
+        "reasoning_chars": [
+          0,
+          0
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": null,
+        "reasoning_fields": []
+      }
+    },
+    "think_min": {
+      "available": false,
+      "reference_mean_reasoning_tokens": 1125.0,
+      "reason": "no candidate reduced reasoning enough — set thinking.budget_min in models.yaml from the provider's documentation"
+    }
+  },
+  "log": [
+    "default mode thinks: True (reasoning field(s): ['reasoning'])",
+    "off-candidate rejected {'chat_template_kwargs': {'enable_thinking': False}}: http_400",
+    "off-candidate rejected {'chat_template_kwargs': {'thinking': False}}: http_400",
+    "off-candidate rejected {'thinking': {'type': 'disabled'}}: http_400",
+    "nothink via {'reasoning_effort': 'none'}",
+    "budget-candidate rejected {'thinking_budget': 1}: http_400",
+    "budget-candidate rejected {'reasoning': {'budget': 1}}: http_400",
+    "budget-candidate rejected {'thinking': {'type': 'enabled', 'budget': 1}}: http_400",
+    "budget-candidate rejected {'chat_template_kwargs': {'thinking_budget': 1}}: http_400",
+    "budget-candidate rejected {'reasoning_effort': 1}: http_400",
+    "budget-candidate no clear effect {'reasoning_effort': 'low'}: 1142 vs 1125 reasoning tokens (needs <= 50% of the reference, answers 2/2)",
+    "budget-candidate rejected {'thinking': {'type': 'enabled', 'budget_tokens': 1024}}: http_400",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "Qwen3.5-397B-A17B",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": true,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      558,
+      581
+    ],
+    "reasoning_tokens_exact": false,
+    "reasoning_chars": [
+      1597,
+      1690
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": "reasoning",
+    "reasoning_fields": [
+      "reasoning"
+    ]
+  },
+  "reasoning_field": "reasoning",
+  "reasoning_format": [
+    "reasoning"
+  ],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 19,
+  "probe_seconds": 52.7
+}

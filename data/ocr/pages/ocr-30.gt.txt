@@ -1,0 +1,20 @@
+2026 Yılı Birim Fiyat Listesi (KDV hariç)
+Kod Ürün / Hizmet Birim Liste Fiyatı İskontolu
+PK-1000 Yazılım lisansı (yıllık abonelik) Adet 8.439,83 TL 7.764,64 TL
+PK-1007 Teknik destek hizmeti Saat 1.279,98 TL 1.177,58 TL
+PK-1014 A4 fotokopi kâğıdı Koli 1.079,37 TL 993,02 TL
+PK-1021 Endüstriyel rulman 6204-2RS Adet 284,31 TL 261,57 TL
+PK-1028 Danışmanlık hizmeti Saat 5.149,48 TL 4.737,52 TL
+PK-1035 Sunucu bakım hizmeti Ay 17.479,61 TL 16.081,24 TL
+PK-1042 Kargo taşıma bedeli Adet 412,77 TL 379,75 TL
+PK-1049 Ergonomik ofis koltuğu Adet 7.132,62 TL 6.562,01 TL
+PK-1056 Toner kartuşu (siyah) Adet 3.173,83 TL 2.919,92 TL
+PK-1063 Kurumsal eğitim hizmeti Gün 24.310,40 TL 22.365,57 TL
+PK-1070 Paslanmaz çelik vida M8 Paket 249,80 TL 229,82 TL
+PK-1077 Güvenlik kamerası kurulumu Adet 6.714,12 TL 6.176,99 TL
+PK-1084 Bulut depolama hizmeti (1 TB) Ay 684,21 TL 629,47 TL
+PK-1091 Temizlik malzemesi seti Set 2.101,35 TL 1.933,24 TL
+PK-1098 Oluklu mukavva kutu 40x30x30 Adet 44,90 TL 41,31 TL
+PK-1105 Hidrolik yağ (20 L bidon) Adet 4.121,18 TL 3.791,49 TL
+PK-1112 Ağ anahtarı 24 port Adet 8.135,24 TL 7.484,42 TL
+PK-1119 Çağrı merkezi hizmeti Ay 39.983,93 TL 36.785,22 TL

@@ -1,0 +1,19 @@
+Akçakoru Yazılım A.Ş.
+Atatürk Cad. No:35 Selçuklu/Konya
+Vergi Dairesi: Bornova  VKN: 1059201539
+Tel: 0 (520) 555 96 91
+e-FATURA
+Fatura No: SDG2026627349793
+Fatura Tarihi: 25.06.2026
+Vade Tarihi: 24.08.2026
+SAYIN
+Gökçeada Örnek Gıda San. ve Tic. Ltd. Şti.
+Atatürk Cad. No:176 Ataşehir/İstanbul
+VKN: 1430484039
+Sıra Mal/Hizmet Miktar Birim Fiyat Tutar
+1 Çağrı merkezi hizmeti 5 Ay 64.651,58 TL 323.257,90 TL
+KDV Matrahı: 323.257,90 TL
+Hesaplanan KDV (%10): 32.325,79 TL
+Ödenecek Tutar: 355.583,69 TL
+Banka: Örnek Katılım Bankası IBAN: TR00 2857 7168 8457 6316 9429 42
+Not: Teslim alınan mallarda 8 gün içinde bildirilmeyen ayıplar için sorumluluk kabul edilmez.

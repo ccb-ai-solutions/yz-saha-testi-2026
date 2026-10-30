@@ -1,0 +1,15 @@
+.env
+.venv*/
+__pycache__/
+*.pyc
+.pytest_cache/
+# rebuilt locally (licence or size): see data/README.md
+data/mcq/*_sample.jsonl
+data/asr/clips/
+data/asr/_fleurs_cache/
+# your own reports and bundles
+report/*
+!report/public-20261030/
+bundle/
+# client data must never land in this repository
+client_data/

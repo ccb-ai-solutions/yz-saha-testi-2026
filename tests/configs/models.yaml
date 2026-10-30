@@ -1,0 +1,35 @@
+models:
+  - {id: mock-think, endpoint: mock, api_model: mock-think, task: chat, family: qwen, params_total_b: 30, params_active_b: 3}
+  - {id: mock-ds, endpoint: mock, api_model: mock-ds, task: chat, family: deepseek, params_total_b: 700, params_active_b: 16, thinking: {budget_probe: true}}
+  - {id: mock-leak, endpoint: mock, api_model: mock-leak, task: chat, family: glm, tier: optional}
+  - {id: mock-magistral, endpoint: mock, api_model: mock-magistral, task: chat, family: mistral, tier: optional,
+     thinking: {"on": {_system_prefix_file: prompts/vendor/magistral_small_2509_system.txt}}}
+  - {id: mock-plain, endpoint: mock, api_model: mock-plain, task: chat, family: gemma, params_total_b: 31,
+     price: {in: 1.0, out: 2.0, currency: EUR}, tier: deployable-1gpu}
+  - {id: mock-inline, endpoint: mock, api_model: mock-inline, task: chat, family: glm, params_total_b: 750}
+  - {id: mock-strict, endpoint: mock, api_model: mock-strict, task: chat, family: openai}
+  - {id: mock-mistral, endpoint: mock, api_model: mock-mistral, task: chat, family: mistral, tier: optional,
+     options: {param_aliases: {seed: random_seed}}}
+  - {id: mock-flaky, endpoint: mock, api_model: mock-flaky, task: chat, family: mimo, params_total_b: 1000}
+  - {id: auto, endpoint: mock, api_model: auto, task: chat, family: router, is_router: true}
+  - {id: mock-guard, endpoint: mock, api_model: mock-guard, task: guard, family: qwen, options: {guard_format: qwen3guard}}
+  - {id: mock-safeguard, endpoint: mock, api_model: mock-safeguard, task: guard, family: openai-oss,
+     options: {guard_format: policy_json}}
+  - {id: mock-capped, endpoint: mock-free, api_model: mock-plain, task: chat, family: gemma, tier: optional}
+  - {id: mock-unprobed, endpoint: mock, api_model: mock-plain, task: chat, family: gemma, tier: optional}
+  - {id: mock-judge, endpoint: mock, api_model: mock-judge, task: chat, family: judge, tier: judge}
+  - {id: mock-judge-b, endpoint: mock, api_model: mock-judge-b, task: chat, family: judge, tier: judge,
+     options: {batch_api: anthropic}, price: {in: 2.0, out: 10.0, currency: USD, batch: 0.5}}
+  - {id: mock-embed, endpoint: mock, api_model: mock-embed, task: embedding, options: {query_prefix: "Instruct: q\nQuery:", batch_size: 64}}
+  - {id: mock-cohere, endpoint: mock-invoke, api_model: "cohere.embed-multilingual-v3", task: embedding,
+     options: {bedrock_flavor: cohere, batch_size: 96}, price: {in: 0.10, out: 0, currency: USD}}
+  - {id: mock-titan, endpoint: mock-invoke, api_model: "amazon.titan-embed-text-v2:0", task: embedding,
+     options: {bedrock_flavor: titan, batch_size: 16, dimensions: 256}}
+  - {id: mock-rerank, endpoint: mock, api_model: mock-rerank, task: rerank}
+  - {id: mock-ocr-a, endpoint: mock, api_model: mock-ocr-a, task: ocr, options: {concurrency: 4}}
+  - {id: mock-ocr-b, endpoint: mock, api_model: mock-ocr-b, task: ocr, options: {concurrency: 4}}
+  - {id: mock-asr, endpoint: mock, api_model: mock-asr, task: asr, options: {language: tr}}
+  - {id: mock-laya, endpoint: mock, api_model: mock-laya, task: decision}
+  - {id: mock-clef, endpoint: mock, api_model: mock-clef, task: decision, options: {batch: false}}
+  - {id: mock-uocr, endpoint: local, api_model: baidu/Unlimited-OCR, task: local_ocr,
+     options: {backend: worker, revision: test, concurrency: 1, crop_mode: true, max_length: 8192}}

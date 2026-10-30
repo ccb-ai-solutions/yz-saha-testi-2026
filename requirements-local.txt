@@ -1,0 +1,15 @@
+# optional local / on-prem baselines (bge-m3, multilingual-e5, small embedders, rerankers, Whisper-large-v3)
+# GPU: install the torch build that matches your CUDA first (V100 = sm70 -> fp16 only, no bf16).
+# The newest embedders (EmbeddingGemma 2, Harrier, Granite r2, the Turkish ModernBERTs) need current libraries:
+#   pip install -U -r requirements-local.txt
+torch>=2.2
+transformers>=5.19           # embeddingmagibu2 (EmbeddingGemma 2 architecture) needs 5.19+
+sentence-transformers>=6.1   # ... and sentence-transformers 6.1+
+# EmbeddingGemma 2 and embeddingmagibu2 load Google's multimodal processor, which needs Pillow and torchvision.
+# torchvision must be the build of your torch (torch 2.14.1+cu126 -> torchvision 0.29.1 from the same index):
+#   python -m pip install --no-deps torchvision==0.29.1 --index-url https://download.pytorch.org/whl/cu126
+pillow>=10
+einops>=0.7          # nomic-embed-text v1.5 / v2-moe custom code (trust_remote_code)
+faster-whisper>=1.0
+huggingface_hub>=0.23
+# Tesseract (classical OCR baseline) is a system package: install it plus the 'tur' language data.

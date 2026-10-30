@@ -1,0 +1,31 @@
+endpoints:
+  mock:
+    base_url: ${MOCK_BASE_URL:-http://127.0.0.1:8765/v1}
+    api_key_env: MOCK_API_KEY
+    auth: x-api-key
+    track: test
+    hardware: "mock gateway (tests/mock_evren.py)"
+    network: private
+    limits: {tpm: 2000000, tpm_safety: 0.85, cached_prompt_weight: 0.03}
+    quota_path: /quota
+    terms_prefix: /terms
+    reasoning_fields: [reasoning_content, reasoning, thinking]
+    timeouts: {connect: 5, ttft: 30, idle: 15, total: 120, request: 60}
+  mock-invoke:                       # Bedrock InvokeModel shape on the mock (embeddings)
+    base_url: ${MOCK_ROOT_URL:-http://127.0.0.1:8765}
+    api_key_env: MOCK_API_KEY
+    auth: bearer
+    api_style: bedrock_invoke
+    track: test
+    network: private
+  mock-free:                         # a second mock endpoint with a 1-request concurrency cap (Ollama-like)
+    base_url: ${MOCK_BASE_URL:-http://127.0.0.1:8765/v1}
+    api_key_env: MOCK_API_KEY
+    auth: bearer
+    track: test
+    network: private
+    limits: {max_concurrency: 1}
+  local:
+    base_url: http://127.0.0.1:9/v1
+    network: private
+    track: test

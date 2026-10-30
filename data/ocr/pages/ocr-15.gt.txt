@@ -1,0 +1,20 @@
+Gökçeada Örnek Lojistik San. ve Tic. A.Ş.
+Çiçekli Sok. No:65 Çankaya/Ankara
+Vergi Dairesi: Nilüfer  VKN: 9021612672
+Tel: 0 (529) 555 15 39
+e-FATURA
+Fatura No: FZE2026159911488
+Fatura Tarihi: 15.08.2026
+SAYIN
+Mercanköşk Enerji San. ve Tic. Ltd. Şti.
+Çiçekli Sok. No:108 Şehitkamil/Gaziantep
+VKN: 2959005091
+Sıra Mal/Hizmet Miktar Birim Fiyat Tutar
+1 Ağ anahtarı 24 port 1 Adet 20.996,69 TL 20.996,69 TL
+2 Ergonomik ofis koltuğu 3 Adet 5.373,25 TL 16.119,75 TL
+3 Güvenlik kamerası kurulumu 6 Adet 9.187,19 TL 55.123,14 TL
+Mal/Hizmet Toplam Tutarı: 92.239,58 TL
+Hesaplanan KDV (%20): 18.447,92 TL
+Vergiler Dahil Toplam Tutar: 110.687,50 TL
+Banka: Deneme Bankası A.Ş. IBAN: TR00 3195 8566 7991 4376 2351 69
+Not: Teslim alınan mallarda 8 gün içinde bildirilmeyen ayıplar için sorumluluk kabul edilmez.

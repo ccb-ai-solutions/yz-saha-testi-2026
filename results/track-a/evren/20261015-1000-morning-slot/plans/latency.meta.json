@@ -1,0 +1,170 @@
+{
+ "plan": "latency",
+ "plan_hash": "462eb061d113cb1d6152f1be808ae6511b2de5171ab74208a09da9c1e355e2c8",
+ "n_requests": 60,
+ "n_items": 60,
+ "written_utc": "2026-10-15T07:00:04+00:00",
+ "config_hash": "7f0673bf494cab5d",
+ "config": {
+  "workloads": [
+   "chat",
+   "rag",
+   "long"
+  ],
+  "n": 20,
+  "max_tokens": {
+   "chat": 2048,
+   "rag": 4096,
+   "long": 8192
+  },
+  "profile": "standard",
+  "decoding": {
+   "temperature": 0.6,
+   "top_p": 0.95
+  },
+  "levels": [
+   2,
+   4,
+   8,
+   16
+  ],
+  "sweep_workloads": [
+   "rag"
+  ],
+  "sweep_modes": [
+   "default"
+  ],
+  "mode_workloads": {
+   "nothink": [
+    "rag"
+   ],
+   "think_min": [
+    "rag"
+   ]
+  },
+  "schedule": "parallel",
+  "warmup": [
+   20,
+   64
+  ],
+  "sweep_requests": [
+   8,
+   2
+  ],
+  "cache_buster": true,
+  "time_budget_s": {
+   "warmup": 600,
+   "chat": 1200,
+   "rag": 1800,
+   "long": 3600,
+   "cell": 600
+  },
+  "ocr_probe": {
+   "models": [
+    "dots-ocr"
+   ],
+   "pages": 10,
+   "concurrency_levels": [
+    1,
+    4
+   ],
+   "requests_per_worker": 3
+  },
+  "session_window": {
+   "day_end_tsi": "18:00",
+   "margin_minutes": 10,
+   "evening_max_minutes": 110,
+   "slots_tsi": [
+    "10:00",
+    "15:00",
+    "21:00"
+   ],
+   "before_next_slot_minutes": 20
+  },
+  "prompt_ids": {
+   "chat": [
+    "chat-36",
+    "chat-19",
+    "chat-04",
+    "chat-16",
+    "chat-01",
+    "chat-25",
+    "chat-23",
+    "chat-41",
+    "chat-44",
+    "chat-21",
+    "chat-37",
+    "chat-15",
+    "chat-47",
+    "chat-34",
+    "chat-10",
+    "chat-22",
+    "chat-43",
+    "chat-09",
+    "chat-35",
+    "chat-32"
+   ],
+   "rag": [
+    "rag-065",
+    "rag-031",
+    "rag-016",
+    "rag-008",
+    "rag-026",
+    "rag-011",
+    "rag-045",
+    "rag-091",
+    "rag-034",
+    "rag-062",
+    "rag-047",
+    "rag-033",
+    "rag-092",
+    "rag-021",
+    "rag-057",
+    "rag-046",
+    "rag-095",
+    "rag-085",
+    "rag-023",
+    "rag-083"
+   ],
+   "long": [
+    "long-30",
+    "long-31",
+    "long-26",
+    "long-08",
+    "long-06",
+    "long-19",
+    "long-20",
+    "long-05",
+    "long-13",
+    "long-04",
+    "long-01",
+    "long-47",
+    "long-48",
+    "long-02",
+    "long-45",
+    "long-32",
+    "long-28",
+    "long-41",
+    "long-44",
+    "long-29"
+   ]
+  }
+ },
+ "variants": [
+  "gemma-4-31b:default",
+  "gemma-4-31b:nothink",
+  "qwen3-vl-30b:default",
+  "qwen3.8-flash-next:default",
+  "qwen3.8-flash-next:nothink",
+  "deepseek-v4-flash:default",
+  "deepseek-v4-flash:nothink",
+  "deepseek-v4.1-flash:default",
+  "deepseek-v4.1-flash:nothink",
+  "glm-5.3:default",
+  "glm-5.3:think_min",
+  "mimo-v2.6-pro:default",
+  "mimo-v2.6-pro:nothink",
+  "auto:default"
+ ],
+ "limit": null
+}

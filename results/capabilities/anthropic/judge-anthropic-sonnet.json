@@ -1,0 +1,61 @@
+{
+  "model_id": "judge-anthropic-sonnet",
+  "endpoint": "anthropic",
+  "api_model": "claude-sonnet-5-5",
+  "probed_at": "2026-10-10T17:48:08.647+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [
+    "temperature",
+    "top_p"
+  ],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "think": {
+      "available": false,
+      "reason": "model does not expose thinking"
+    }
+  },
+  "log": [
+    "dropping unsupported parameter 'temperature' (`temperature` is deprecated for this model.)",
+    "dropping unsupported parameter 'top_p' (`top_p` is deprecated for this model.)",
+    "default mode thinks: False (reasoning field(s): [])",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "claude-sonnet-5-5",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": false,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      0,
+      0
+    ],
+    "reasoning_tokens_exact": false,
+    "reasoning_chars": [
+      0,
+      0
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": null,
+    "reasoning_fields": []
+  },
+  "reasoning_field": null,
+  "reasoning_format": [],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 17,
+  "probe_seconds": 21.7
+}

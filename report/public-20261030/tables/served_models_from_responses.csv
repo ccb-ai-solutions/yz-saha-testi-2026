@@ -1,0 +1,15 @@
+variant,served_model
+deepseek-v4-flash:default,deepseek/deepseek-v4-flash
+deepseek-v4-flash:nothink,deepseek/deepseek-v4-flash
+deepseek-v4.1-flash:default,deepseek/deepseek-v4.1-flash
+deepseek-v4.1-flash:nothink,deepseek/deepseek-v4.1-flash
+deploy-chat:default,magistral-small-1.2
+gemma-4-31b:default,google/gemma-4-31b
+gemma-4-31b:nothink,google/gemma-4-31b
+glm-5.3:default,zai/glm-5.3-fp8
+glm-5.3:think_min,zai/glm-5.3-fp8
+mimo-v2.6-pro:default,xiaomi/mimo-v2.6-pro
+mimo-v2.6-pro:nothink,xiaomi/mimo-v2.6-pro
+qwen3-vl-30b:default,qwen/qwen3-vl-30b-a3b
+qwen3.8-flash-next:default,qwen/qwen3.8-flash-next
+qwen3.8-flash-next:nothink,qwen/qwen3.8-flash-next

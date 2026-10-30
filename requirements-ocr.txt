@@ -1,0 +1,12 @@
+# Unlimited-OCR's own environment (.venv-ocr) — created by scripts\setup_unlimited_ocr.ps1, which first installs
+# torch==2.10.0 / torchvision==0.25.0 from the PyTorch CUDA index (download.pytorch.org/whl/cu126).
+# The versions are the model card's "tested with" list (baidu/Unlimited-OCR, 14 Oct 2026); the harness itself
+# (.venv, transformers 5.x) does not use this file.
+transformers==4.57.1
+pillow==12.1.1
+matplotlib==3.10.8
+einops==0.8.2
+addict==2.4.0
+easydict==1.13
+pymupdf==1.27.2.2
+psutil==7.2.2

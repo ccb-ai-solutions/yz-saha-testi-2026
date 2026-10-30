@@ -1,0 +1,5 @@
+model: mock-judge
+mode: default
+decoding: greedy
+max_tokens: 2048
+concurrency: 8

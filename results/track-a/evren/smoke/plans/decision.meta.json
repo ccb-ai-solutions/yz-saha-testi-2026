@@ -1,0 +1,22 @@
+{
+ "plan": "decision",
+ "plan_hash": "6de4d4c3bd4937a90f5d2b8bcc2e9ab870e24f150d4b9eeff5d8f6a115004de9",
+ "n_requests": 3,
+ "n_items": 3,
+ "written_utc": "2026-10-10T18:13:31+00:00",
+ "suite": "decision",
+ "limit": 3,
+ "repeats": 1,
+ "plan_seed": "trbench-v1",
+ "profile": "standard",
+ "max_tokens": 2048,
+ "data_sha256": "ffb955fa59caa7c59dc67ba62157a691f4ea6635ac4c8467ba6cf9ba1c814ecc",
+ "source": null,
+ "ocr_session": null,
+ "decoding": {
+  "standard": {
+   "temperature": 0.6,
+   "top_p": 0.95
+  }
+ }
+}

@@ -1,0 +1,4 @@
+variant,token_param,max_tokens,temperature,top_p,mode_params,distinct_param_sets,flags
+qwen3-guard-4b:default,max_tokens,128,0.0,,,1,seed not sent
+qwen3guard-gen-0.6b:default,max_tokens,128,0.0,,,1,ok
+qwen3guard-gen-8b:default,max_tokens,128,0.0,,,1,ok

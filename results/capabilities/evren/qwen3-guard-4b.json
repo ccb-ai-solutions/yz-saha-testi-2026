@@ -1,0 +1,26 @@
+{
+  "model_id": "qwen3-guard-4b",
+  "endpoint": "evren",
+  "api_model": "qwen3-guard-4b",
+  "probed_at": "2026-10-10T17:39:33.489+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [
+    "seed"
+  ],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    }
+  },
+  "log": [
+    "dropping unsupported parameter 'seed' (model 'qwen3-guard-4b' 'seed' parametresini desteklemiyor)",
+    "task 'guard': parameter negotiation only"
+  ],
+  "available": true,
+  "served_model": "qwen/qwen3guard-gen-4b",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "probe_requests": 2,
+  "probe_seconds": 0.2
+}

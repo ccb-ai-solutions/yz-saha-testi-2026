@@ -1,0 +1,20 @@
+{
+ "plan": "guard_classifier",
+ "plan_hash": "1c9c030aeca48827f94b93bfd307a2fec37eba16a7bbbdea7fbdfe8b31130009",
+ "n_requests": 131,
+ "n_items": 131,
+ "written_utc": "2026-10-30T11:13:12+00:00",
+ "suite": "guard",
+ "limit": null,
+ "repeats": 1,
+ "plan_seed": "trbench-v1",
+ "profile": "greedy",
+ "max_tokens": 128,
+ "data_sha256": "c979f0ec93efcc972345038a385850bb59543b587e2eef8293de8f8e16506a26",
+ "format": "classifier",
+ "decoding": {
+  "greedy": {
+   "temperature": 0.0
+  }
+ }
+}

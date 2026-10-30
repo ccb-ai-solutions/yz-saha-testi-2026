@@ -1,0 +1,91 @@
+{
+  "model_id": "qwen3.8-flash-next",
+  "endpoint": "evren",
+  "api_model": "qwen3.8-flash-next",
+  "probed_at": "2026-10-11T05:38:33.773+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "nothink": {
+      "available": true,
+      "params": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "evidence": {
+        "rejected": false,
+        "reasoning_tokens": [
+          0,
+          0
+        ],
+        "reasoning_tokens_exact": true,
+        "reasoning_chars": [
+          0,
+          0
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": null,
+        "reasoning_fields": []
+      }
+    },
+    "think_min": {
+      "available": false,
+      "reference_mean_reasoning_tokens": 299.5,
+      "reason": "no candidate reduced reasoning enough — set thinking.budget_min in models.yaml from the provider's documentation"
+    }
+  },
+  "log": [
+    "default mode thinks: True (reasoning field(s): ['reasoning'])",
+    "nothink via {'chat_template_kwargs': {'enable_thinking': False}}",
+    "budget-candidate no clear effect {'reasoning_effort': 'low'}: 294 vs 300 reasoning tokens (needs <= 70% of the reference, answers 2/2)",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "qwen/qwen3.8-flash-next",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": true,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      121,
+      66
+    ],
+    "reasoning_tokens_exact": true,
+    "reasoning_chars": [
+      344,
+      232
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": "reasoning",
+    "reasoning_fields": [
+      "reasoning"
+    ]
+  },
+  "reasoning_field": "reasoning",
+  "reasoning_format": [
+    "reasoning"
+  ],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 10,
+  "probe_seconds": 13.5
+}

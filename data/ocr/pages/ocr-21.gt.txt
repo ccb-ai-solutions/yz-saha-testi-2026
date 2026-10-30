@@ -1,0 +1,19 @@
+Gökçeada Örnek Enerji San. ve Tic. Ltd. Şti.
+Fevzi Çakmak Cad. No:159 Şişli/İstanbul
+Vergi Dairesi: Bornova  VKN: 8523713538
+Tel: 0 (532) 555 64 19
+e-FATURA
+Fatura No: KKF2026510744196
+Fatura Tarihi: 05.05.2026
+Vade Tarihi: 19.06.2026
+SAYIN
+Çınaraltı Medikal San. ve Tic. A.Ş.
+Şehit Öğretmen Sok. No:177 Çankaya/Ankara
+VKN: 7881640612
+Sıra Mal/Hizmet Miktar Birim Fiyat Tutar
+1 Çağrı merkezi hizmeti 1 Ay 42.415,92 TL 42.415,92 TL
+Mal/Hizmet Toplam Tutarı: 42.415,92 TL
+Hesaplanan KDV (%20): 8.483,18 TL
+Vergiler Dahil Toplam Tutar: 50.899,10 TL
+Banka: Deneme Bankası A.Ş. IBAN: TR00 2120 5548 6555 7542 9814 97
+Not: Bu belge 213 sayılı Vergi Usul Kanunu uyarınca düzenlenmiş örnek bir faturadır.

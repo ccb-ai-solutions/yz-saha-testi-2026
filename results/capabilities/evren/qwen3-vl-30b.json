@@ -1,0 +1,56 @@
+{
+  "model_id": "qwen3-vl-30b",
+  "endpoint": "evren",
+  "api_model": "qwen3-vl-30b",
+  "probed_at": "2026-10-10T17:39:14.128+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "think": {
+      "available": false,
+      "reason": "model does not expose thinking"
+    }
+  },
+  "log": [
+    "default mode thinks: False (reasoning field(s): [])",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "qwen/qwen3-vl-30b-a3b",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": false,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      0,
+      0
+    ],
+    "reasoning_tokens_exact": false,
+    "reasoning_chars": [
+      0,
+      0
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": null,
+    "reasoning_fields": []
+  },
+  "reasoning_field": null,
+  "reasoning_format": [],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 14,
+  "probe_seconds": 4.2
+}

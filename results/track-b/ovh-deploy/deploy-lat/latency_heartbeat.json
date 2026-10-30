@@ -1,0 +1,1 @@
+{"session": "deploy-lat", "endpoints": ["ovh-deploy"], "scope": "machine", "pid": 45268, "heartbeat_epoch": 1792769501.857892, "power": {"ac_power": true, "battery_percent": 100}, "released": true}

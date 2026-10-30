@@ -1,0 +1,120 @@
+{
+  "model_id": "gpt-oss-120b",
+  "endpoint": "ovh",
+  "api_model": "gpt-oss-120b",
+  "probed_at": "2026-10-11T05:39:18.811+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "nothink": {
+      "available": false,
+      "reason": "no candidate removed reasoning"
+    },
+    "think_min": {
+      "available": true,
+      "params": {
+        "reasoning_effort": "low"
+      },
+      "evidence": {
+        "rejected": false,
+        "reasoning_tokens": [
+          124,
+          145
+        ],
+        "reasoning_tokens_exact": false,
+        "reasoning_chars": [
+          223,
+          269
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": "reasoning",
+        "reasoning_fields": [
+          "reasoning"
+        ]
+      },
+      "reference": {
+        "rejected": false,
+        "reasoning_tokens": [
+          244,
+          236
+        ],
+        "reasoning_tokens_exact": false,
+        "reasoning_chars": [
+          455,
+          491
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": "reasoning",
+        "reasoning_fields": [
+          "reasoning"
+        ]
+      },
+      "reference_mean_reasoning_tokens": 240.0,
+      "documented": true
+    }
+  },
+  "log": [
+    "default mode thinks: True (reasoning field(s): ['reasoning'])",
+    "off-candidate rejected {'chat_template_kwargs': {'enable_thinking': False}}: http_400",
+    "off-candidate rejected {'chat_template_kwargs': {'thinking': False}}: http_400",
+    "off-candidate rejected {'thinking': {'type': 'disabled'}}: http_400",
+    "off-candidate rejected {'reasoning_effort': 'none'}: http_400",
+    "off-candidate rejected {'reasoning': {'enabled': False}}: http_400",
+    "off-candidate rejected {'enable_thinking': False}: http_400",
+    "off-candidate {'reasoning_effort': 'minimal'} removed the reasoning but 2 of 2 answers were empty (['empty_answer', 'empty_answer']) — not accepted",
+    "think_min via {'reasoning_effort': 'low'} (134 vs 240 reasoning tokens on the budget prompt)",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "gpt-oss-120b",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": true,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      130,
+      118
+    ],
+    "reasoning_tokens_exact": false,
+    "reasoning_chars": [
+      349,
+      322
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": "reasoning",
+    "reasoning_fields": [
+      "reasoning"
+    ]
+  },
+  "reasoning_field": "reasoning",
+  "reasoning_format": [
+    "reasoning"
+  ],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 16,
+  "probe_seconds": 19.0
+}

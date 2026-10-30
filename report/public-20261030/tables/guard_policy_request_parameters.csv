@@ -1,0 +1,3 @@
+variant,token_param,max_tokens,temperature,top_p,mode_params,distinct_param_sets,flags
+gpt-oss-safeguard-120b:default,max_tokens,2048,0.0,,,1,ok
+gpt-oss-safeguard-20b:default,max_tokens,2048,0.0,,,1,ok

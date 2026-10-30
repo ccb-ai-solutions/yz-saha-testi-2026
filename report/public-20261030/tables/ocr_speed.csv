@@ -1,0 +1,4 @@
+variant,ran_on,pages_in_flight,pages,s_per_page_p50,s_per_page_p90,s_per_page_max,pages_per_min_one_stream,peak_vram_gb
+deepseek-ocr-2,evren (hosted),2,30,2.957467800064478,4.601369499997237,6.127715900074691,19.308806659894422,
+dots-ocr,evren (hosted),2,30,7.327505900000688,11.082638230104932,14.550208600005135,7.507077453643349,
+unlimited-ocr,this PC (NVIDIA GeForce RTX 4060 Laptop GPU (8.0 GB)),1,30,27.64823644998978,45.59400732999495,82.47638419999566,1.9134389804040934,7.05

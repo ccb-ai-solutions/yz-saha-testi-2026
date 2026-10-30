@@ -1,0 +1,170 @@
+{
+  "model_id": "glm-5.3",
+  "endpoint": "evren",
+  "api_model": "glm-5.3",
+  "probed_at": "2026-10-19T18:27:07.606+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "nothink": {
+      "available": true,
+      "params": {
+        "thinking": false
+      },
+      "evidence": {
+        "rejected": false,
+        "reasoning_tokens": [
+          0,
+          0
+        ],
+        "reasoning_tokens_exact": true,
+        "reasoning_chars": [
+          0,
+          0
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": null,
+        "reasoning_fields": [],
+        "content_chars": [
+          121,
+          119
+        ],
+        "content_turkish_ratio": [
+          1.0,
+          1.0
+        ]
+      },
+      "rule": "no-reasoning-and-answer-not-inflated"
+    },
+    "think_min": {
+      "available": true,
+      "params": {
+        "reasoning_effort": "low"
+      },
+      "evidence": {
+        "rejected": false,
+        "reasoning_tokens": [
+          60,
+          64
+        ],
+        "reasoning_tokens_exact": true,
+        "reasoning_chars": [
+          84,
+          90
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": "reasoning",
+        "reasoning_fields": [
+          "reasoning"
+        ],
+        "content_chars": [
+          82,
+          67
+        ],
+        "content_turkish_ratio": [
+          0.0,
+          1.0
+        ]
+      },
+      "reference": {
+        "rejected": false,
+        "reasoning_tokens": [
+          687,
+          396
+        ],
+        "reasoning_tokens_exact": true,
+        "reasoning_chars": [
+          2257,
+          1132
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": "reasoning",
+        "reasoning_fields": [
+          "reasoning"
+        ],
+        "content_chars": [
+          222,
+          274
+        ],
+        "content_turkish_ratio": [
+          1.0,
+          1.0
+        ]
+      },
+      "reference_mean_reasoning_tokens": 541.5,
+      "documented": true,
+      "rule": "every-run-below-shortest-reference"
+    }
+  },
+  "log": [
+    "default mode thinks: True (reasoning field(s): ['reasoning'])",
+    "nothink via {'thinking': False}",
+    "think_min via {'reasoning_effort': 'low'} (runs [60, 64] vs reference [687, 396] reasoning tokens on the budget prompt)",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "zai/glm-5.3-fp8",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": true,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      86,
+      95
+    ],
+    "reasoning_tokens_exact": true,
+    "reasoning_chars": [
+      279,
+      305
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": "reasoning",
+    "reasoning_fields": [
+      "reasoning"
+    ],
+    "content_chars": [
+      74,
+      62
+    ],
+    "content_turkish_ratio": [
+      1.0,
+      1.0
+    ]
+  },
+  "reasoning_field": "reasoning",
+  "reasoning_format": [
+    "reasoning"
+  ],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 10,
+  "probe_seconds": 81.4
+}

@@ -1,0 +1,2 @@
+variant,auroc,n_unsafe,n_safe
+modernbert-tr-guardrail:default,0.9602618045815802,62,69

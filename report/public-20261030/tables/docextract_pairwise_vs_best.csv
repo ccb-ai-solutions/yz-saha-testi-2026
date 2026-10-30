@@ -1,0 +1,15 @@
+a,b,diff_a_minus_b,ci_lo,ci_hi,p,n_items,p_holm,significant
+deepseek-v4-flash:default,deepseek-v4.1-flash:default,0.0,0.0,0.0,1.0,30,1.0,False
+deepseek-v4-flash:default,deploy-chat:default,0.0,0.0,0.0,1.0,30,1.0,False
+deepseek-v4-flash:default,gemma-4-31b:default,0.0,0.0,0.0,1.0,30,1.0,False
+deepseek-v4-flash:default,glm-5.3:default,0.011111111111111112,0.0,0.03333333333333333,1.0,30,1.0,False
+deepseek-v4-flash:default,gpt-oss-120b:default,0.14444444444444446,0.055555555555555566,0.24444444444444446,0.007899210078992101,30,0.11058894110588942,False
+deepseek-v4-flash:default,gpt-oss-20b:default,0.10000000000000002,0.03333333333333333,0.17777777777777778,0.014898510148985102,30,0.19368063193680632,False
+deepseek-v4-flash:default,magistral-small-1.2:default,0.0,0.0,0.0,1.0,30,1.0,False
+deepseek-v4-flash:default,mimo-v2.6-pro:default,0.0,0.0,0.0,1.0,30,1.0,False
+deepseek-v4-flash:default,nemotron-3-super:default,0.08888888888888889,0.022222222222222223,0.17777777777777778,0.11908809119088092,30,1.0,False
+deepseek-v4-flash:default,qwen3-vl-30b:default,0.0,0.0,0.0,1.0,30,1.0,False
+deepseek-v4-flash:default,qwen3.5-397b:default,0.06666666666666668,0.022222222222222223,0.12222222222222223,0.031296870312968704,30,0.3755624437556244,False
+deepseek-v4-flash:default,qwen3.5-9b:default,0.055555555555555566,0.011111111111111112,0.11111111111111113,0.1252874712528747,30,1.0,False
+deepseek-v4-flash:default,qwen3.8-27b:default,0.0,0.0,0.0,1.0,30,1.0,False
+deepseek-v4-flash:default,qwen3.8-flash-next:default,0.0,0.0,0.0,1.0,30,1.0,False

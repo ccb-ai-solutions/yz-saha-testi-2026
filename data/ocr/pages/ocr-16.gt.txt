@@ -1,0 +1,20 @@
+Değirmendere Örnek Kırtasiye San. ve Tic. A.Ş.
+Fevzi Çakmak Cad. No:40 Bornova/İzmir
+Vergi Dairesi: Selçuk  VKN: 9476480366
+Tel: 0 (545) 555 91 17
+e-FATURA
+Fatura No: HFJ2026931773257
+Fatura Tarihi: 30.08.2026
+Vade Tarihi: 29.10.2026
+SAYIN
+Akçakoru Tekstil San. ve Tic. A.Ş.
+Atatürk Cad. No:115 Çankaya/Ankara
+VKN: 9226428085
+Sıra Mal/Hizmet Miktar Birim Fiyat Tutar
+1 Ağ anahtarı 24 port 1 Adet 13.876,42 TL 13.876,42 TL
+2 Bulut depolama hizmeti (1 TB) 100 Ay 644,11 TL 64.411,00 TL
+Mal/Hizmet Toplam Tutarı: 78.287,42 TL
+Hesaplanan KDV (%10): 7.828,74 TL
+Vergiler Dahil Toplam Tutar: 86.116,16 TL
+Banka: Örnek Katılım Bankası IBAN: TR00 1663 1416 8191 8467 7159 90
+Not: Bu belge 213 sayılı Vergi Usul Kanunu uyarınca düzenlenmiş örnek bir faturadır.

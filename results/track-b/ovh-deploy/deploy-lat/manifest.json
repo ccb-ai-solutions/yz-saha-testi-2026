@@ -1,0 +1,314 @@
+{
+  "session_id": "deploy-lat",
+  "track": "b",
+  "endpoint": "ovh-deploy",
+  "created_utc": "2026-10-23T15:15:19+00:00",
+  "created_tsi": "2026-10-23T18:15:19+03:00",
+  "time_slot_tsi": "evening",
+  "harness_version": "0.1.0",
+  "environment": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname_hash": "107b12843447"
+  },
+  "suites": {
+    "latency": {
+      "variants": [
+        "deploy-chat:default",
+        "deploy-chat:nothink",
+        "deploy-chat:think_min"
+      ],
+      "code_sha256": "fc6a6a50c6aac82eabeda9ce3eff3d305401ab1c6895efc315dbd0bd31f0eaad",
+      "data_sha256": "2f90458aacc39927082e327234360008f027b7157f4356d00eb3f935b82733db",
+      "config": {
+        "campaign.yaml": "9ff6a93e1fb48060d4a7848d2726f899e480473130a16d34a564a192031d335a",
+        "campaign_optional.yaml": "37d12026d12a59bd6baa551f99250fc192fc7b5efc4892e2ee525c5c6014a42c",
+        "endpoints.yaml": "e82490226b6d998668a90c3c9686abb4ffd5f5481396dee92943efd99adb4715",
+        "judge.yaml": "9d62a333dae46017a4fb707d8aef4011149ab4e89424275e948e151079f7f7c1",
+        "models.yaml": "37a345e9d8e16cac85f89b31d2574ec60d7833e8e48dc869055a1ab0e51d29be",
+        "policy.yaml": "d457435e2f035de34a3fbc42a8c8011a099210c48b38cfc6f7da4c2db4dbdbcb",
+        "service_changes.yaml": "a6a219cf237c5152450373b4827731a5e7c33ed3f2f075374952c462dd33ffcc",
+        "suites.yaml": "a78f9c6f7cd5ffb77ef229669578a56cf514ef53120a72d01dec8600711dd506"
+      },
+      "cfg": {
+        "plan_seed": "trbench-v1",
+        "repeats": 3,
+        "concurrency": 4,
+        "parallel_variants": 2,
+        "decoding_profile": "standard",
+        "max_tokens": {
+          "chat": 2048,
+          "rag": 4096,
+          "long": 8192
+        },
+        "modes": [
+          "default",
+          "nothink",
+          "think_min"
+        ],
+        "workloads": [
+          "rag"
+        ],
+        "prompts_per_workload": 20,
+        "warmup_requests": 20,
+        "warmup_max_tokens": 64,
+        "schedule": "parallel",
+        "concurrency_levels": [
+          2,
+          4,
+          8,
+          12,
+          16,
+          20,
+          24,
+          32,
+          48
+        ],
+        "sweep_workloads": [
+          "rag"
+        ],
+        "sweep_modes": [
+          "default"
+        ],
+        "sweep_min_requests": 8,
+        "sweep_requests_per_stream": 3,
+        "tpm_fraction": 0.8,
+        "cooldown_s": 3,
+        "cache_buster": true,
+        "lock_scope": "machine",
+        "mode_workloads": {
+          "nothink": [
+            "rag"
+          ],
+          "think_min": [
+            "rag"
+          ]
+        },
+        "exclude_variants": [
+          "glm-5.3:nothink"
+        ],
+        "time_budget_s": {
+          "warmup": 600,
+          "chat": 1200,
+          "rag": 1800,
+          "long": 3600,
+          "cell": 900
+        },
+        "session_window": {},
+        "early_sweep_below_minutes": 300,
+        "lock_wait_s": 1500,
+        "warmup_requests_resume": 5,
+        "max_parts": 12,
+        "network_guard": {
+          "probe_interval_s": 15,
+          "probe_timeout_s": 15,
+          "unit_tries": 3,
+          "cell_tries": 3
+        },
+        "ocr_probe": {
+          "models": [
+            "dots-ocr"
+          ],
+          "pages": 10,
+          "concurrency_levels": [
+            1,
+            4
+          ],
+          "requests_per_worker": 3
+        },
+        "max_minutes": 120.0
+      },
+      "profile": "standard",
+      "ocr_probe": [],
+      "summary": {
+        "plan_hash": "a846771443692a6b21dfd1a222f82084633c04c4f487fcd1f605e5c3b8399939",
+        "config_hash": "784ab582afa6a3da",
+        "variants": [
+          "deploy-chat:default"
+        ],
+        "end_reason": "complete",
+        "completed": true,
+        "partial": false,
+        "interrupted": false,
+        "deadline_hit": false,
+        "deadline_tsi": "2026-10-23T20:15+03:00",
+        "window_end_tsi": null,
+        "parts": [
+          {
+            "part": 1,
+            "started_tsi": "2026-10-23T18:15:19+03:00",
+            "ended_tsi": "2026-10-23T18:31:41+03:00",
+            "end": "complete",
+            "power_start": {
+              "ac_power": true,
+              "battery_percent": 100
+            },
+            "power_end": {
+              "ac_power": true,
+              "battery_percent": 100
+            }
+          }
+        ],
+        "resumed": false,
+        "coverage": {
+          "c1": {
+            "rag": {
+              "done": 20,
+              "planned": 20
+            }
+          },
+          "sweep_cells": {
+            "measured": 9,
+            "skipped": 0
+          },
+          "ocr_cells": 0,
+          "requests_hit_by_outages": 0
+        },
+        "outages": [],
+        "budget_stops": [],
+        "slow_models": {},
+        "stage_order": [
+          "rag",
+          "sweep"
+        ],
+        "ocr_probe": [],
+        "sweeps": [
+          {
+            "cell": "c2-rag-deploy-chat_default",
+            "seconds": 30.41,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c4-rag-deploy-chat_default",
+            "seconds": 26.25,
+            "outcomes": {
+              "ok": 12
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 4
+          },
+          {
+            "cell": "c8-rag-deploy-chat_default",
+            "seconds": 39.92,
+            "outcomes": {
+              "ok": 24
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 8
+          },
+          {
+            "cell": "c12-rag-deploy-chat_default",
+            "seconds": 55.09,
+            "outcomes": {
+              "ok": 36
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 12
+          },
+          {
+            "cell": "c16-rag-deploy-chat_default",
+            "seconds": 207.44,
+            "outcomes": {
+              "ok": 47,
+              "truncated": 1
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 16
+          },
+          {
+            "cell": "c20-rag-deploy-chat_default",
+            "seconds": 78.44,
+            "outcomes": {
+              "ok": 60
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 20
+          },
+          {
+            "cell": "c24-rag-deploy-chat_default",
+            "seconds": 93.05,
+            "outcomes": {
+              "ok": 72
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 24
+          },
+          {
+            "cell": "c32-rag-deploy-chat_default",
+            "seconds": 119.26,
+            "outcomes": {
+              "ok": 96
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 32
+          },
+          {
+            "cell": "c48-rag-deploy-chat_default",
+            "seconds": 170.45,
+            "outcomes": {
+              "ok": 144
+            },
+            "variant": "deploy-chat:default",
+            "workload": "rag",
+            "concurrency": 48
+          }
+        ],
+        "rtt": {
+          "ovh-deploy": {
+            "get_models_ms": {
+              "n": 10,
+              "p50": 124.273,
+              "p90": 207.649,
+              "min": 121.432,
+              "max": 211.294
+            }
+          }
+        },
+        "quota_start": {
+          "ovh-deploy": null
+        },
+        "quota_end": {
+          "ovh-deploy": null
+        },
+        "client_loop_lag": {
+          "p50_ms": 11.88,
+          "p99_ms": 14.24,
+          "max_ms": 160.02,
+          "n": 16132
+        },
+        "time_budget_s": {
+          "warmup": 600,
+          "chat": 1200,
+          "rag": 1800,
+          "long": 3600,
+          "cell": 900
+        },
+        "kept_awake": true,
+        "power_start": {
+          "ac_power": true,
+          "battery_percent": 100
+        },
+        "power_end": {
+          "ac_power": true,
+          "battery_percent": 100
+        },
+        "waited_for_previous_session_s": null,
+        "summarised_tsi": "2026-10-23T18:31:41+03:00"
+      }
+    }
+  },
+  "events": []
+}

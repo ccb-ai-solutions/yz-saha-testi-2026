@@ -1,0 +1,70 @@
+{
+  "model_id": "deploy-chat",
+  "endpoint": "ovh-deploy",
+  "api_model": "magistral-small-1.2",
+  "probed_at": "2026-10-23T14:38:25.246+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "think": {
+      "available": false,
+      "reason": "model does not expose thinking"
+    }
+  },
+  "log": [
+    "default mode thinks: False (reasoning field(s): [])",
+    "on-candidate rejected {'chat_template_kwargs': {'enable_thinking': True}}: http_400_param",
+    "on-candidate rejected {'chat_template_kwargs': {'thinking': True}}: http_400_param",
+    "on-candidate had no effect {'thinking': {'type': 'enabled'}}: reasoning chars [0, 0], answers 2/2",
+    "on-candidate rejected {'reasoning_effort': 'medium'}: http_400_param",
+    "on-candidate had no effect {'reasoning_effort': 'high'}: reasoning chars [0, 0], answers 2/2",
+    "on-candidate had no effect {'enable_thinking': True}: reasoning chars [0, 0], answers 2/2",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "magistral-small-1.2",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": false,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      0,
+      0
+    ],
+    "reasoning_tokens_exact": false,
+    "reasoning_chars": [
+      0,
+      0
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": null,
+    "reasoning_fields": [],
+    "content_chars": [
+      64,
+      48
+    ],
+    "content_turkish_ratio": [
+      1.0,
+      1.0
+    ]
+  },
+  "reasoning_field": null,
+  "reasoning_format": [],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 13,
+  "probe_seconds": 10.4
+}

@@ -1,0 +1,10 @@
+{
+ "plan": "decision_laya",
+ "plan_hash": "8ac9a3bfbced5f557cbf90ec0fbe5679c6f58a13113cd85538acf4eb660edbdd",
+ "n_requests": 3,
+ "n_items": 3,
+ "written_utc": "2026-10-10T18:24:20+00:00",
+ "repeats": 1,
+ "state_format": "string",
+ "limit": 3
+}

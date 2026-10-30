@@ -1,0 +1,569 @@
+{
+  "session_id": "20261014-1156-morning-c06d",
+  "track": "a",
+  "endpoint": "evren",
+  "created_utc": "2026-10-14T08:56:50+00:00",
+  "created_tsi": "2026-10-14T11:56:50+03:00",
+  "time_slot_tsi": "morning",
+  "harness_version": "0.1.0",
+  "environment": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname_hash": "107b12843447"
+  },
+  "suites": {
+    "latency": {
+      "variants": [
+        "gemma-4-31b:default",
+        "gemma-4-31b:nothink",
+        "gemma-4-31b:think_min",
+        "qwen3-vl-30b:default",
+        "qwen3-vl-30b:nothink",
+        "qwen3-vl-30b:think_min",
+        "qwen3.8-flash-next:default",
+        "qwen3.8-flash-next:nothink",
+        "qwen3.8-flash-next:think_min",
+        "deepseek-v4-flash:default",
+        "deepseek-v4-flash:nothink",
+        "deepseek-v4-flash:think_min",
+        "deepseek-v4.1-flash:default",
+        "deepseek-v4.1-flash:nothink",
+        "deepseek-v4.1-flash:think_min",
+        "glm-5.3:default",
+        "glm-5.3:nothink",
+        "glm-5.3:think_min",
+        "mimo-v2.6-pro:default",
+        "mimo-v2.6-pro:nothink",
+        "mimo-v2.6-pro:think_min",
+        "auto:default"
+      ],
+      "code_sha256": "2f4bf4be97b0fe0603eed6a9a8acae977499cab64d8b613a7650b2a435b05406",
+      "data_sha256": "2f90458aacc39927082e327234360008f027b7157f4356d00eb3f935b82733db",
+      "config": {
+        "campaign.yaml": "e333ae6b6b8f0cee3d2c139ecb31e1ea4ed1082552c1df158dde0a742e542994",
+        "campaign_optional.yaml": "37d12026d12a59bd6baa551f99250fc192fc7b5efc4892e2ee525c5c6014a42c",
+        "endpoints.yaml": "e82490226b6d998668a90c3c9686abb4ffd5f5481396dee92943efd99adb4715",
+        "judge.yaml": "9d62a333dae46017a4fb707d8aef4011149ab4e89424275e948e151079f7f7c1",
+        "models.yaml": "3fa082ac3587ba3cb47658f768ae9618d6711c3b2f90e73c1b281baa3de0b59c",
+        "policy.yaml": "d457435e2f035de34a3fbc42a8c8011a099210c48b38cfc6f7da4c2db4dbdbcb",
+        "suites.yaml": "aecf3adf9c75f83064f17fc47cb5dc52a4c3e080533deb4c6613bca27c8498d5"
+      },
+      "cfg": {
+        "plan_seed": "trbench-v1",
+        "repeats": 3,
+        "concurrency": 4,
+        "parallel_variants": 2,
+        "decoding_profile": "standard",
+        "max_tokens": {
+          "chat": 2048,
+          "rag": 4096,
+          "long": 8192
+        },
+        "modes": [
+          "default",
+          "nothink",
+          "think_min"
+        ],
+        "workloads": [
+          "chat",
+          "rag",
+          "long"
+        ],
+        "prompts_per_workload": 20,
+        "warmup_requests": 20,
+        "warmup_max_tokens": 64,
+        "schedule": "parallel",
+        "concurrency_levels": [
+          2,
+          4,
+          8,
+          16
+        ],
+        "sweep_workloads": [
+          "rag"
+        ],
+        "sweep_modes": [
+          "default"
+        ],
+        "sweep_min_requests": 8,
+        "sweep_requests_per_stream": 2,
+        "tpm_fraction": 0.8,
+        "cooldown_s": 3,
+        "cache_buster": true,
+        "lock_scope": "machine",
+        "mode_workloads": {
+          "nothink": [
+            "rag"
+          ],
+          "think_min": [
+            "rag"
+          ]
+        },
+        "time_budget_s": {
+          "warmup": 600,
+          "chat": 1200,
+          "rag": 1800,
+          "long": 3600,
+          "cell": 600
+        },
+        "session_window": {
+          "day_end_tsi": "18:00",
+          "margin_minutes": 10,
+          "evening_max_minutes": 110,
+          "slots_tsi": [
+            "10:00",
+            "15:00",
+            "21:00"
+          ],
+          "before_next_slot_minutes": 20
+        },
+        "lock_wait_s": 1500,
+        "ocr_probe": {
+          "models": [
+            "dots-ocr"
+          ],
+          "pages": 10,
+          "concurrency_levels": [
+            1,
+            4
+          ],
+          "requests_per_worker": 3
+        }
+      },
+      "profile": "standard",
+      "ocr_probe": [
+        "dots-ocr"
+      ],
+      "summary": {
+        "plan_hash": "275fd6064c870e4e58a6720191e7dfe0016560dc885de4c827a91e9b1b763ae5",
+        "config_hash": "7f0673bf494cab5d",
+        "variants": [
+          "gemma-4-31b:default",
+          "gemma-4-31b:nothink",
+          "qwen3-vl-30b:default",
+          "qwen3.8-flash-next:default",
+          "qwen3.8-flash-next:nothink",
+          "deepseek-v4-flash:default",
+          "deepseek-v4-flash:nothink",
+          "deepseek-v4.1-flash:default",
+          "deepseek-v4.1-flash:nothink",
+          "glm-5.3:default",
+          "glm-5.3:think_min",
+          "mimo-v2.6-pro:default",
+          "mimo-v2.6-pro:nothink",
+          "auto:default"
+        ],
+        "deadline_tsi": "2026-10-14T14:40+03:00",
+        "kept_awake": true,
+        "rtt": {
+          "evren": {
+            "get_models_ms": {
+              "n": 10,
+              "p50": 50.06,
+              "p90": 69.092,
+              "min": 40.352,
+              "max": 125.853
+            }
+          }
+        },
+        "quota_start": {
+          "evren": {
+            "raw": {
+              "used_tokens": 0,
+              "cap": 2500000,
+              "window_minutes": 5,
+              "reset_at": "2026-10-14T08:57:00+00:00",
+              "usage_ratio": 0.0,
+              "level": "ok",
+              "held_cr": "0",
+              "remaining_cr": "0",
+              "daily_used_tokens": 48688,
+              "daily_limit_tokens": 15000000,
+              "daily_remaining_tokens": 14951312,
+              "daily_reset_at": "2026-10-15T00:00:00Z"
+            },
+            "daily_limit": 15000000,
+            "daily_remaining": 14951312,
+            "reset_at": "2026-10-15T00:00:00Z",
+            "read_at": "2026-10-14T08:56:51+00:00"
+          }
+        },
+        "ocr_probe": [
+          {
+            "cell": "ocr-c1-dots-ocr",
+            "seconds": 26.09,
+            "outcomes": {
+              "ok": 10
+            },
+            "model": "dots-ocr",
+            "concurrency": 1,
+            "pages": [
+              "ocr-19",
+              "ocr-02",
+              "ocr-04",
+              "ocr-17",
+              "ocr-01",
+              "ocr-18",
+              "ocr-27",
+              "ocr-28",
+              "ocr-25",
+              "ocr-24"
+            ]
+          },
+          {
+            "cell": "ocr-c4-dots-ocr",
+            "seconds": 11.94,
+            "outcomes": {
+              "ok": 12
+            },
+            "model": "dots-ocr",
+            "concurrency": 4,
+            "pages": [
+              "ocr-19",
+              "ocr-02",
+              "ocr-04",
+              "ocr-17",
+              "ocr-01",
+              "ocr-18",
+              "ocr-27",
+              "ocr-28",
+              "ocr-25",
+              "ocr-24"
+            ]
+          }
+        ],
+        "sweeps": [
+          {
+            "cell": "c2-rag-glm-5.3_default",
+            "seconds": 823.1,
+            "outcomes": {
+              "ok": 5
+            },
+            "budget_stop": true,
+            "variant": "glm-5.3:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c2-rag-qwen3.8-flash-next_default",
+            "seconds": 26.22,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "qwen3.8-flash-next:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c2-rag-auto_default",
+            "seconds": 33.01,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "auto:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c2-rag-deepseek-v4-flash_default",
+            "seconds": 26.78,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "deepseek-v4-flash:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c2-rag-mimo-v2.6-pro_default",
+            "seconds": 187.07,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "mimo-v2.6-pro:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c2-rag-qwen3-vl-30b_default",
+            "seconds": 4.89,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "qwen3-vl-30b:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c2-rag-gemma-4-31b_default",
+            "seconds": 42.66,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "gemma-4-31b:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c2-rag-deepseek-v4.1-flash_default",
+            "seconds": 218.11,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "deepseek-v4.1-flash:default",
+            "workload": "rag",
+            "concurrency": 2
+          },
+          {
+            "cell": "c4-rag-deepseek-v4-flash_default",
+            "seconds": 37.48,
+            "outcomes": {
+              "ok": 7,
+              "truncated_in_reasoning": 1
+            },
+            "variant": "deepseek-v4-flash:default",
+            "workload": "rag",
+            "concurrency": 4
+          },
+          {
+            "cell": "c4-rag-auto_default",
+            "seconds": 9.88,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "auto:default",
+            "workload": "rag",
+            "concurrency": 4
+          },
+          {
+            "cell": "c4-rag-qwen3.8-flash-next_default",
+            "seconds": 19.88,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "qwen3.8-flash-next:default",
+            "workload": "rag",
+            "concurrency": 4
+          },
+          {
+            "cell": "c4-rag-mimo-v2.6-pro_default",
+            "seconds": 24.99,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "mimo-v2.6-pro:default",
+            "workload": "rag",
+            "concurrency": 4
+          },
+          {
+            "cell": "c4-rag-gemma-4-31b_default",
+            "seconds": 22.17,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "gemma-4-31b:default",
+            "workload": "rag",
+            "concurrency": 4
+          },
+          {
+            "variant": "qwen3-vl-30b:default",
+            "workload": "rag",
+            "concurrency": 4,
+            "skipped": "tpm_cap",
+            "predicted_tpm": 758477
+          },
+          {
+            "cell": "c4-rag-glm-5.3_default",
+            "seconds": 682.47,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "glm-5.3:default",
+            "workload": "rag",
+            "concurrency": 4
+          },
+          {
+            "cell": "c4-rag-deepseek-v4.1-flash_default",
+            "seconds": 131.87,
+            "outcomes": {
+              "ok": 8
+            },
+            "variant": "deepseek-v4.1-flash:default",
+            "workload": "rag",
+            "concurrency": 4
+          },
+          {
+            "cell": "c8-rag-mimo-v2.6-pro_default",
+            "seconds": 59.91,
+            "outcomes": {
+              "ok": 16
+            },
+            "variant": "mimo-v2.6-pro:default",
+            "workload": "rag",
+            "concurrency": 8
+          },
+          {
+            "variant": "deepseek-v4-flash:default",
+            "workload": "rag",
+            "concurrency": 8,
+            "skipped": "tpm_cap",
+            "predicted_tpm": 452914
+          },
+          {
+            "cell": "c8-rag-deepseek-v4.1-flash_default",
+            "seconds": 67.71,
+            "outcomes": {
+              "ok": 16
+            },
+            "variant": "deepseek-v4.1-flash:default",
+            "workload": "rag",
+            "concurrency": 8
+          },
+          {
+            "variant": "qwen3-vl-30b:default",
+            "workload": "rag",
+            "concurrency": 8,
+            "skipped": "tpm_cap",
+            "predicted_tpm": 1516955
+          },
+          {
+            "cell": "c8-rag-auto_default",
+            "seconds": 16.36,
+            "outcomes": {
+              "ok": 16
+            },
+            "variant": "auto:default",
+            "workload": "rag",
+            "concurrency": 8
+          },
+          {
+            "cell": "c8-rag-qwen3.8-flash-next_default",
+            "seconds": 11.67,
+            "outcomes": {
+              "ok": 16
+            },
+            "variant": "qwen3.8-flash-next:default",
+            "workload": "rag",
+            "concurrency": 8
+          },
+          {
+            "cell": "c8-rag-gemma-4-31b_default",
+            "seconds": 14.51,
+            "outcomes": {
+              "ok": 16
+            },
+            "variant": "gemma-4-31b:default",
+            "workload": "rag",
+            "concurrency": 8
+          },
+          {
+            "cell": "c8-rag-glm-5.3_default",
+            "seconds": 851.68,
+            "outcomes": {
+              "ok": 16
+            },
+            "variant": "glm-5.3:default",
+            "workload": "rag",
+            "concurrency": 8
+          },
+          {
+            "variant": "deepseek-v4-flash:default",
+            "workload": "rag",
+            "concurrency": 16,
+            "skipped": "tpm_cap",
+            "predicted_tpm": 905829
+          },
+          {
+            "cell": "c16-rag-auto_default",
+            "seconds": 15.23,
+            "outcomes": {
+              "ok": 32
+            },
+            "variant": "auto:default",
+            "workload": "rag",
+            "concurrency": 16
+          },
+          {
+            "variant": "qwen3-vl-30b:default",
+            "workload": "rag",
+            "concurrency": 16,
+            "skipped": "tpm_cap",
+            "predicted_tpm": 3033911
+          },
+          {
+            "cell": "c16-rag-deepseek-v4.1-flash_default",
+            "seconds": 234.56,
+            "outcomes": {
+              "ok": 32
+            },
+            "variant": "deepseek-v4.1-flash:default",
+            "workload": "rag",
+            "concurrency": 16
+          }
+        ],
+        "quota_end": {
+          "evren": {
+            "raw": {
+              "used_tokens": 163231,
+              "cap": 2500000,
+              "window_minutes": 5,
+              "reset_at": "2026-10-14T11:42:00+00:00",
+              "usage_ratio": 0.0652924,
+              "level": "ok",
+              "held_cr": "0",
+              "remaining_cr": "0",
+              "daily_used_tokens": 2118006,
+              "daily_limit_tokens": 15000000,
+              "daily_remaining_tokens": 12881994,
+              "daily_reset_at": "2026-10-15T00:00:00Z"
+            },
+            "daily_limit": 15000000,
+            "daily_remaining": 12881994,
+            "reset_at": "2026-10-15T00:00:00Z",
+            "read_at": "2026-10-14T11:41:23+00:00"
+          }
+        },
+        "client_loop_lag": {
+          "p50_ms": 12.38,
+          "p99_ms": 16.02,
+          "max_ms": 63.14,
+          "n": 165267
+        },
+        "time_budget_s": {
+          "warmup": 600,
+          "chat": 1200,
+          "rag": 1800,
+          "long": 3600,
+          "cell": 600
+        },
+        "budget_stops": [
+          {
+            "stage": "c1",
+            "workload": "long",
+            "model": "glm-5.3",
+            "sent": 17,
+            "planned": 20,
+            "elapsed_s": 4016.8,
+            "budget_s": 3600.0,
+            "reason": "time_budget"
+          },
+          {
+            "stage": "sweep",
+            "workload": "rag c2",
+            "model": "glm-5.3:default",
+            "sent": 4,
+            "planned": 8,
+            "elapsed_s": 752.0,
+            "budget_s": 600.0,
+            "reason": "time_budget"
+          }
+        ],
+        "deadline_hit": true,
+        "interrupted": false,
+        "completed": true
+      }
+    }
+  },
+  "events": []
+}

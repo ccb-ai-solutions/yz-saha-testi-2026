@@ -1,0 +1,2 @@
+variant,token_param,max_tokens,temperature,top_p,mode_params,distinct_param_sets,flags
+modernbert-tr-guardrail:default,max_tokens,,,,"{""local"": ""transformers"", ""hf_id"": ""ytu-ce-cosmos/modernbert-tr-guardrail"", ""revision"": ""main"", ""device"": ""cuda (NVIDIA GeForce RTX 4060 Laptop GPU)"", ""dtype"": ""float32"", ""activation"": ""sigmoid"", ""max_length"": 8192, ""threshold"": 0.5, ""torch"": ""2.14.1+cu126"", ""transformers"": ""5.19.0""}",1,seed not sent; temperature not sent (dropped by probe)

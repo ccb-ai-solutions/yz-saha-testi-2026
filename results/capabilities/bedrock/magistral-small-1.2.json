@@ -1,0 +1,65 @@
+{
+  "model_id": "magistral-small-1.2",
+  "endpoint": "bedrock",
+  "api_model": "mistral.magistral-small-2509",
+  "probed_at": "2026-10-11T07:11:55.110+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "think": {
+      "available": false,
+      "reason": "model does not expose thinking"
+    }
+  },
+  "log": [
+    "default mode thinks: False (reasoning field(s): [])",
+    "on-candidate had no effect {'_system_prefix_file': 'prompts/vendor/magistral_small_2509_system.txt'}: reasoning chars [0, 0], answers 2/2",
+    "tools: {'native': False, 'arguments_ok': False, 'textual_json': True}"
+  ],
+  "available": true,
+  "served_model": "mistral.magistral-small-2509",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": false,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      0,
+      0
+    ],
+    "reasoning_tokens_exact": false,
+    "reasoning_chars": [
+      0,
+      0
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": null,
+    "reasoning_fields": [],
+    "content_chars": [
+      64,
+      48
+    ],
+    "content_turkish_ratio": [
+      1.0,
+      1.0
+    ]
+  },
+  "reasoning_field": null,
+  "reasoning_format": [],
+  "tools": {
+    "native": false,
+    "arguments_ok": false,
+    "textual_json": true
+  },
+  "probe_requests": 6,
+  "probe_seconds": 55.1
+}

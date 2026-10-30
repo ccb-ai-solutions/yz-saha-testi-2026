@@ -1,0 +1,12 @@
+# core harness + analysis (Python 3.10+)
+httpx>=0.27
+PyYAML>=6.0
+numpy>=1.24
+pandas>=2.0
+jsonschema>=4.18
+rapidfuzz>=3.0
+matplotlib>=3.7
+pillow>=10.0
+pyarrow>=14.0        # reading the MCQ parquet files
+openpyxl>=3.1        # the human-check workbook (scripts/human_check_workbook.py)
+pytest>=7.0          # tests (incl. the mock-gateway end-to-end test)

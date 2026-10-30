@@ -1,0 +1,10 @@
+{
+ "plan": "retrieval_rag",
+ "plan_hash": "bb283349068cda530f3b02d37401eb2ea86dfeaa79d3ee3d1efd1eeefc91a8b6",
+ "n_requests": 90,
+ "n_items": 90,
+ "written_utc": "2026-10-13T12:05:13+00:00",
+ "plan_hash_semantic": "cd01a056b7778e1b300279759e12bf0794aea719c5ba03ee1aa1a5ad292a2049",
+ "rerank_limit": null,
+ "limit": null
+}

@@ -1,0 +1,97 @@
+{
+  "model_id": "deepseek-v4.1-flash",
+  "endpoint": "evren",
+  "api_model": "deepseek-v4.1-flash",
+  "probed_at": "2026-10-11T05:38:14.874+00:00",
+  "token_param": "max_tokens",
+  "drop_params": [],
+  "modes": {
+    "default": {
+      "available": true,
+      "params": {}
+    },
+    "nothink": {
+      "available": true,
+      "params": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "evidence": {
+        "rejected": false,
+        "reasoning_tokens": [
+          0,
+          0
+        ],
+        "reasoning_tokens_exact": true,
+        "reasoning_chars": [
+          0,
+          0
+        ],
+        "answers": 2,
+        "n": 2,
+        "outcomes": [
+          "ok",
+          "ok"
+        ],
+        "reasoning_field": null,
+        "reasoning_fields": []
+      }
+    },
+    "think_min": {
+      "available": false,
+      "reference_mean_reasoning_tokens": 157.5,
+      "reason": "no candidate reduced reasoning enough — set thinking.budget_min in models.yaml from the provider's documentation"
+    }
+  },
+  "log": [
+    "default mode thinks: True (reasoning field(s): ['reasoning'])",
+    "nothink via {'chat_template_kwargs': {'enable_thinking': False}}",
+    "budget-candidate no clear effect {'reasoning_effort': 'low'}: 142 vs 158 reasoning tokens (needs <= 70% of the reference, answers 2/2)",
+    "budget-candidate no clear effect {'thinking_budget': 1}: 147 vs 158 reasoning tokens (needs <= 50% of the reference, answers 2/2)",
+    "budget-candidate no clear effect {'reasoning': {'budget': 1}}: 142 vs 158 reasoning tokens (needs <= 50% of the reference, answers 2/2)",
+    "budget-candidate no clear effect {'thinking': {'type': 'enabled', 'budget': 1}}: 123 vs 158 reasoning tokens (needs <= 50% of the reference, answers 2/2)",
+    "budget-candidate no clear effect {'chat_template_kwargs': {'thinking_budget': 1}}: 190 vs 158 reasoning tokens (needs <= 50% of the reference, answers 2/2)",
+    "budget-candidate rejected {'reasoning_effort': 1}: http_400",
+    "budget-candidate no clear effect {'thinking': {'type': 'enabled', 'budget_tokens': 1024}}: 142 vs 158 reasoning tokens (needs <= 50% of the reference, answers 2/2)",
+    "tools: {'native': True, 'arguments_ok': True, 'textual_json': False}"
+  ],
+  "available": true,
+  "served_model": "deepseek/deepseek-v4.1-flash",
+  "usage_in_stream": true,
+  "keepalive_seen": false,
+  "default_thinks": true,
+  "default_reasoning": {
+    "rejected": false,
+    "reasoning_tokens": [
+      49,
+      70
+    ],
+    "reasoning_tokens_exact": true,
+    "reasoning_chars": [
+      153,
+      183
+    ],
+    "answers": 2,
+    "n": 2,
+    "outcomes": [
+      "ok",
+      "ok"
+    ],
+    "reasoning_field": "reasoning",
+    "reasoning_fields": [
+      "reasoning"
+    ]
+  },
+  "reasoning_field": "reasoning",
+  "reasoning_format": [
+    "reasoning"
+  ],
+  "tools": {
+    "native": true,
+    "arguments_ok": true,
+    "textual_json": false
+  },
+  "probe_requests": 21,
+  "probe_seconds": 23.8
+}
