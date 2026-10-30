@@ -130,7 +130,7 @@ V100S 32 GB). Üzerinde [vLLM](https://github.com/vllm-project/vllm) 0.18.1 ile 
 karşılaştığımız tuzaklarla birlikte [deploy/](deploy/) klasörüne koyduk.
 
 Dil modellerinin çevresinde 36 pipeline modeli daha ölçtük: 19 embedding modeli (ve Türkçe kök bulmalı BM25), 3
-reranker, 6 guardrail modeli, 3 OCR modeli, 3 ASR modeli (4 kurulumda) ve EVREN'in iki karar modeli (laya ve clef;
+reranker, 6 guardrail modeli, 3 OCR modeli, 3 ASR modeli (4 kurulumda) ve EVREN'deki iki karar modeli (laya ve clef;
 bu ikisini yalnızca ticket routing testinde ölçtük). Küçük embedding modelleri, Unlimited-OCR, yerel Whisper ve YTÜ
 COSMOS'un guardrail modeli, ölçümü yapan dizüstü bilgisayarda (RTX 4060) çalıştı. Tam liste, lisanslar ve bu
 modelleri neden seçtiğimiz [MODELS.md](MODELS.md)'de.
@@ -149,8 +149,7 @@ modelleri neden seçtiğimiz [MODELS.md](MODELS.md)'de.
   [turkish-e5-large](https://huggingface.co/ytu-ce-cosmos/turkish-e5-large) (YTÜ COSMOS),
   [embeddinggemma-300m](https://huggingface.co/google/embeddinggemma-300m),
   [EmbeddingGemma 2](https://huggingface.co/google/embeddinggemma-2),
-  embeddingmagibu2-text-v1 (30 Ekim itibarıyla Hugging Face'teki adresinde yok; ayrıntı
-  [MODELS.md](MODELS.md#sources-checked-2026-10-10)'de),
+  [embeddingmagibu2-text-v1](https://huggingface.co/alibayram/embeddingmagibu2-text-v1),
   [nomic-embed-text-v2-moe](https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe),
   [nomic-embed-text v1.5](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5),
   [UltraBERT-Embed-150M](https://huggingface.co/dmis-lab/UltraBERT-Embed-150M),
@@ -176,9 +175,8 @@ modelleri neden seçtiğimiz [MODELS.md](MODELS.md)'de.
   [Whisper large-v3](https://huggingface.co/openai/whisper-large-v3) (OVHcloud ve yerelde
   [faster-whisper](https://github.com/SYSTRAN/faster-whisper) ile),
   [Whisper large-v3-turbo](https://huggingface.co/openai/whisper-large-v3-turbo) (OVHcloud)
-- **Karar modelleri:** laya ve clef EVREN'in kendi modelleri; ağırlıklarını açık bir yerde bulamadık. EVREN'e göre
-  laya, [mmBERT-base](https://huggingface.co/jhu-clsp/mmBERT-base) üzerine Türkçe ince ayar (aynı soru tiplerini
-  kullanan açık model ailesi: [Laya](https://huggingface.co/convaiinnovations/laya)); clef ise Qwen3.8-27B tabanlı.
+- **Karar modelleri (EVREN):** [laya](https://huggingface.co/convaiinnovations/laya) (EVREN, kataloğuna göre Türkçe ince ayarlı
+  bir sürümünü sunuyor) ve [clef](https://huggingface.co/Cloudflare/clef) (Cloudflare; Qwen3.8-27B tabanlı)
 
 </details>
 
@@ -315,16 +313,19 @@ getirdiği 20 parçayı qwen3-reranker-8b yeniden sıraladığında çıkan puan
 | İlk aşama | Reranker olmadan | qwen3-reranker-8b ile |
 |---|---:|---:|
 | qwen3-embedding-8b (8B parametre) | 0,869 | 0,925 |
+| turkish-e5-large (YTÜ COSMOS, 560M parametre) | 0,861 | 0,927 |
 | embeddinggemma-300m (300M parametre) | 0,861 | 0,924 |
 | BM25 (model yok; Türkçe kök bulmalı kelime araması) | 0,728 | 0,882 |
 | nomic-embed-text v1.5 (yalnızca İngilizce eğitilmiş) | 0,432 | – |
 
-Reranker eklenince embedding modelleri arasındaki fark büyük ölçüde kapanıyor: 300M parametrelik embeddinggemma
-ile 8B parametrelik qwen3-embedding aynı noktaya geliyor, hiçbir model kullanmayan BM25 bile 0,73'ten 0,88'e
-çıkıyor. Pratikteki anlamı şu: kurum içi arama kurarken büyük bir embedding modeline yatırım yapmak yerine küçük
-bir embedding modelini iyi bir reranker'la birlikte kullanmak yetiyor. Yalnızca İngilizce eğitilmiş embedding
-modelleri ise Türkçede doğru parçayı çoğu zaman bulamıyor (0,43). XQuAD'ın Türkçe bölümü bu karşılaştırma için
-fazla kolay; orada BM25 bile 0,945 alıyor.
+Reranker eklenince embedding modelleri arasındaki fark büyük ölçüde kapanıyor: 300M parametrelik embeddinggemma ile
+8B parametrelik qwen3-embedding aynı noktaya geliyor, hiçbir model kullanmayan BM25 bile 0,73'ten 0,88'e çıkıyor.
+Pratikteki anlamı şu: kurum içi arama kurarken büyük bir embedding modeline yatırım yapmak yerine küçük bir
+embedding modelini iyi bir reranker'la birlikte kullanmak yetiyor. Tamamen yerel çalışan küçük bir seçenek de var:
+YTÜ COSMOS'un modernbert-tr-embed ve modernbert-tr-reranker modelleri (her biri yaklaşık 150 milyon parametre)
+birlikte 0,899 aldı; bu, BAAI'nin bge-reranker-v2-m3 reranker'ını bir embedding modeliyle kullanan kurulumlarla
+(0,894–0,900) aynı seviyede. Yalnızca İngilizce eğitilmiş embedding modelleri ise Türkçede doğru parçayı çoğu zaman
+bulamıyor (0,43). XQuAD'ın Türkçe bölümü bu karşılaştırma için fazla kolay; orada BM25 bile 0,945 alıyor.
 
 **OCR.** 30 sayfada karakter hata oranının medyanı dots-ocr'da %0,16, deepseek-ocr-2'de %0,27, Unlimited-OCR'da
 %0,40. Farkı mühürlü yazılar ortaya koyuyor: bu sayfalarda dots-ocr %3,8, deepseek-ocr-2 %9,5, Unlimited-OCR %11,3

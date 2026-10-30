@@ -148,14 +148,15 @@ its modified MIT licence gives no rights to companies above US$20M monthly reven
 | **Guards** | Qwen3Guard-Gen 0.6B / 4B / 8B (EVREN, OVHcloud — free), gpt-oss-safeguard 20B / 120B (Bedrock), YTU COSMOS modernbert-tr-guardrail ≈150M (this PC; added 30 Oct) | none of the five hosted ones names Turkish as an evaluated language; COSMOS's model is trained on Turkish. Qwen3Guard uses its own template; gpt-oss-safeguard follows **our Turkish policy** (`prompts/tr/guard_policy.md`). Any chat model can be tested as a guard with the same policy |
 | **OCR** | dots-ocr, deepseek-ocr-2 (EVREN), **Unlimited-OCR** (Baidu, 3B, MIT — local GPU, added 14 Oct), Tesseract 5 `tur` (local) | Unlimited-OCR: DeepSeek-OCR-style document parser, model card ParseBench mean 46.17, no languages named; runs in its own environment (transformers 4.57.1) on the measuring laptop's RTX 4060 — its seconds per page are this laptop's, not a server's |
 | **Speech-to-text** | qwen3-asr-1.7b (EVREN), Whisper-large-v3 and -turbo (OVHcloud, per second), Whisper-large-v3 (local, faster-whisper) | |
-| **Decision** | laya and **clef** (EVREN `/v1/systemone`; clef added 14 Oct) vs every chat model with the same label guide | clef: EVREN's typed-decision model on a 27B Qwen3.8 backbone, 16K context, up to 4 images; no batch endpoint, no `answer_confidence` (EVREN docs) |
+| **Decision** | laya and **clef** (EVREN `/v1/systemone`; clef added 14 Oct) vs every chat model with the same label guide | clef: Cloudflare's typed-decision model [Clef](https://huggingface.co/Cloudflare/clef) (Apache-2.0), post-trained from Qwen3.8-27B; on EVREN 16K context, up to 4 images, no batch endpoint, no `answer_confidence` (EVREN docs) |
 
-EVREN's pipeline models other than the two decision models — qwen3-embedding-8b, qwen3-reranker-8b
-(Qwen3-VL-Reranker-8B per EVREN's catalogue), qwen3-guard-4b, dots-ocr (dots.mocr, 3B), deepseek-ocr-2 (3.4B),
-qwen3-asr-1.7b — are open weights (Apache-2.0 / MIT) that fit one GPU. Unlike EVREN's large chat models, their EVREN
-quality scores therefore carry over to an on-prem deployment of the same weights. The decision models are EVREN's
-own: laya (0.3B; per EVREN's catalogue `evren/laya-tr-v5`, a Turkish fine-tune of mmBERT-base) and clef (on a 27B
-Qwen3.8 backbone). We found neither one's weights published (checked 30 Oct).
+All of EVREN's pipeline models are open weights (Apache-2.0 / MIT) that fit one GPU: qwen3-embedding-8b,
+qwen3-reranker-8b (Qwen3-VL-Reranker-8B per EVREN's catalogue), qwen3-guard-4b, dots-ocr (dots.mocr, 3B),
+deepseek-ocr-2 (3.4B), qwen3-asr-1.7b and the two decision models, laya (0.3B) and clef (Cloudflare's Clef, 27B,
+post-trained from Qwen3.8-27B). Unlike EVREN's large chat models, their EVREN quality scores therefore carry over to
+an on-prem deployment of the same weights. One caveat: per its catalogue EVREN serves laya as `evren/laya-tr-v5`, a
+Turkish fine-tune of mmBERT-base, while the published Laya models are multilingual; we found no public copy of the
+Turkish one (checked 30 Oct).
 
 ### Small embedders that run on a laptop or a home GPU (phase 3c, all local and free)
 
@@ -269,9 +270,10 @@ proves the deployment path and quality parity, **not** the speed of RTX PRO 6000
   [Qwen3-VL-Reranker-8B](https://huggingface.co/Qwen/Qwen3-VL-Reranker-8B) (`qwen3-reranker-8b`),
   [Qwen3Guard-Gen-4B](https://huggingface.co/Qwen/Qwen3Guard-Gen-4B) (`qwen3-guard-4b`), [dots.mocr](https://huggingface.co/dots-studio/dots.mocr)
   (`dots-ocr`), [DeepSeek-OCR-2](https://huggingface.co/deepseek-ai/DeepSeek-OCR-2), [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B);
-  laya is `evren/laya-tr-v5`, a Turkish fine-tune of [mmBERT-base](https://huggingface.co/jhu-clsp/mmBERT-base), with no public
-  copy that we could find; the open [Laya](https://huggingface.co/convaiinnovations/laya) models use the same question types
-  (choice, score, noul). Other pipeline models: [Qwen3Guard-Gen-0.6B](https://huggingface.co/Qwen/Qwen3Guard-Gen-0.6B),
+  laya is `evren/laya-tr-v5` per the catalogue, a Turkish fine-tune of [mmBERT-base](https://huggingface.co/jhu-clsp/mmBERT-base) (no
+  public copy found); the published [Laya](https://huggingface.co/convaiinnovations/laya) models are multilingual and use the same
+  question types (choice, score, noul). clef is Cloudflare's [Clef](https://huggingface.co/Cloudflare/clef) (Apache-2.0, post-trained
+  from Qwen3.8-27B; its card says the API is compatible with Jev and SystemOne). Other pipeline models: [Qwen3Guard-Gen-0.6B](https://huggingface.co/Qwen/Qwen3Guard-Gen-0.6B),
   [gpt-oss-safeguard-20b](https://huggingface.co/openai/gpt-oss-safeguard-20b), [gpt-oss-safeguard-120b](https://huggingface.co/openai/gpt-oss-safeguard-120b),
   [Whisper large-v3](https://huggingface.co/openai/whisper-large-v3), [Whisper large-v3-turbo](https://huggingface.co/openai/whisper-large-v3-turbo),
   [faster-whisper](https://github.com/SYSTRAN/faster-whisper) (its [large-v3 conversion](https://huggingface.co/Systran/faster-whisper-large-v3)),
@@ -311,10 +313,8 @@ proves the deployment path and quality parity, **not** the speed of RTX PRO 6000
   [Glimmer on SageMaker JumpStart](https://aws.amazon.com/about-aws/whats-new/2026/01/muse-glimmer-30b-qwen-3.8-27b-on-sagemaker-jumpstart/).
 - Google: [Gemma 4 12B](https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/),
   [Gemma 4 26B-A4B on Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-google-gemma-4-26b-a4b.md).
-- Small embedders: embeddingmagibu2-text-v1 (`alibayram/embeddingmagibu2-text-v1`, revision `27937ea`, and the
-  multimodal `alibayram/embeddingmagibu2-v1`, same text weights; neither repository was public any more on 30 Oct,
-  and the newest one under that name, [magibu/embeddingmagibu2](https://huggingface.co/magibu/embeddingmagibu2) of
-  22 Oct, was not compared with the weights we ran),
+- Small embedders: [embeddingmagibu2-text-v1](https://huggingface.co/alibayram/embeddingmagibu2-text-v1) (and the
+  multimodal [embeddingmagibu2-v1](https://huggingface.co/alibayram/embeddingmagibu2-v1), same text weights),
   [EmbeddingGemma 2](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2)
   ([model card](https://huggingface.co/google/embeddinggemma-2)), [nomic-embed-text-v2-moe](https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe),
   [nomic-embed-text v1.5](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5),
