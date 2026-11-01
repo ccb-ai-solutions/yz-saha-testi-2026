@@ -11,5 +11,7 @@ data/asr/_fleurs_cache/
 report/*
 !report/public-20261030/
 bundle/
+# written by analysis/analyze*.py (results with provenance; the public tables are in report/)
+knowledge_base/
 # client data must never land in this repository
 client_data/

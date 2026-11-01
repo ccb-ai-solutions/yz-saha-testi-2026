@@ -1,8 +1,9 @@
 # Model lineup — what is compared, why, and where it runs
 
-Target hardware for client deployments: **one or two RTX PRO 6000 Blackwell (96 GB) or H200 (141 GB)** cards.
-So the lineup centres on models that fit those cards, measured as **the same weights** on hosted APIs (Track H),
-plus EVREN's fleet (Track A, free until 2026-11-01) and one self-deployed model on OVHcloud V100S (Track B).
+Target hardware for client deployments: **one or two RTX PRO 6000 Blackwell (96 GB) or H200 (141 GB)** cards. So the
+lineup centres on models that fit those cards, measured as **the same weights** on hosted APIs (Track H), plus
+EVREN's fleet (Track A, free until 2026-11-01 when we measured; extended to 2026-12-01 on 31 Oct) and one
+self-deployed model on OVHcloud V100S (Track B).
 
 Facts come from model cards and provider pages, checked on 2026-10-10 (sources at the end). Memory figures are
 weights only; "fits" means weights + ~3 GB runtime per GPU leave **≥ 20 % of VRAM for the KV cache**
@@ -24,14 +25,14 @@ weights only; "fits" means weights + ~3 GB runtime per GPU leave **≥ 20 % of V
 | **gpt-oss-120b** | deployable, 1 GPU (`deployable-1gpu`) | OVHcloud | 117B MoE, 5.1B active | MXFP4 on all four (65 GB) | Apache-2.0 + usage policy | **no** — English-centric control | `reasoning_effort` low / medium / high; cannot be switched off |
 | **Mistral Small 4** (Mistral, EU) — **not in the run** | deployable, 1 GPU at 4-bit (config: `disabled`) | none: NVIDIA's free endpoint answered HTTP 410 on 10 Oct ("end of life on 2026-07-27"); only Mistral's own API is left (optional O0, needs a key) | 119B MoE, 6.5B active (128 experts, 4 active) | NVFP4 on 1×96 (71 GB; Blackwell MoE kernels still young) and on 1×141 (H200 has no FP4 tensor cores: speed unverified); FP8 on 2×96 / 2×141 (121 GB) | Apache-2.0 | **yes, listed** (`tr` among 24 languages) | `reasoning_effort` none / high |
 | **Muse Glimmer 30B** (Meta) | deployable, 1 GPU (`deployable-1gpu`) | NVIDIA's free endpoint | 29.6B dense incl. a 1.8B vision encoder | BF16 on all four (≈60 GB) | Apache-2.0 | "100+ languages", Turkish not named | cannot be switched off: strength low / medium / high (default) / xhigh |
-| **Nemotron 3.5 Lightning 30B-A3B** (NVIDIA) | deployable, 1 GPU (`deployable-1gpu`) | NVIDIA's free endpoint | 30B MoE, ~3B active | BF16 on all four (≈60 GB) | NVIDIA Open Model License | not listed — a control | `enable_thinking` (works); a reasoning budget did not shorten its reasoning on NVIDIA's endpoint (11 Oct) |
+| **Nemotron 3.5 Lightning 30B-A3B** (NVIDIA) | deployable, 1 GPU (`deployable-1gpu`) | NVIDIA's free endpoint | 30B MoE, ~3B active | BF16 on all four (≈60 GB) | NVIDIA Open Model License | not listed — a control | `enable_thinking`; no documented budget switch |
 | **Magistral Small 1.2** (Mistral, EU) | practice twin (`deployable-1gpu`) | Amazon Bedrock **and** our OVH deployment | 24B dense | BF16 on all four (48 GB) | Apache-2.0 | **yes, listed** | reasons in `[THINK]…[/THINK]` only under Mistral's reasoning system prompt, with those markers as special tokens; **on Bedrock it did not reason — not even with that prompt sent as plain text (11 Oct) — and wrote tool calls as text** (10 Oct). Self-hosted (phase 6, 23 Oct): same quality, tool calls returned as calls (0.84 vs 0.24 on Bedrock); its think mode was not run |
 | **Nemotron 3 Super** | deployable, 2 GPUs (`deployable-2gpu`) | Amazon Bedrock | 120B hybrid MoE, 12B active | FP8 on 2×96 / 2×141 (128 GB); NVFP4 on 1×96 is tight | NVIDIA Open Model License | **no** (7 languages) | `enable_thinking`, `low_effort`, reasoning budget; **on Bedrock: no reasoning, and the probe found no switch** (10 Oct) |
 | **Nemotron 3.5 Super VL 120B-A12B** (NVIDIA, 15 Oct 2026) — added 16 Oct | deployable, 1 GPU at 4-bit (`deployable-1gpu`) | NVIDIA's free endpoint (phase 4b) | 120B hybrid MoE (Mamba-2 / Transformer), 12B active, C-RADIO vision encoder (text side tested) | NVFP4 (NVIDIA's quantisation-aware checkpoint, weights ≈68 GB): 1×141 per NVIDIA, 1×96 tight; BF16 needs 4×H100 | OpenMDW-1.1 | **no** (Indian languages only) — a control | `enable_thinking` via `chat_template_kwargs` (NVIDIA's example); budget switch: the probe tries the generic ones |
 | **gpt-oss-20b** | small baseline (`deployable-1gpu`) | OVHcloud | 21B MoE, 3.6B active | any card (13 GB) | Apache-2.0 + usage policy | no | as gpt-oss-120b |
 | **Qwen3.5-9B** | small baseline (`deployable-1gpu`) | OVHcloud | 9B dense | any card (19 GB) | Apache-2.0 | "201 languages", Turkish not named | `enable_thinking` (on by default) |
 | **Qwen3.8-Flash-Next** | 2×H200 class (`evren-2gpu-class`) | EVREN (free) | 180B stored (125B MoE, 6B active + n-gram table) | FP8 on 2×141 (32 % free); 2×96 only with host-RAM offload | Qwen Community License 1.0 — **check before client use** (selling model access / "AI work assistant" products need a separate licence) | not stated | `enable_thinking`, `reasoning_effort` |
-| **DeepSeek-V4-Flash** | 2×H200 class (`evren-2gpu-class`) | EVREN (free; **removed 1 Nov**) | 284B MoE, 13B active | 2×141 (41 % free; FP4 runs on slower kernels on H200); 2×96 marginal | MIT | not stated | adjustable thinking budget on EVREN (the probe finds the parameter) |
+| **DeepSeek-V4-Flash** | 2×H200 class (`evren-2gpu-class`) | EVREN (free; **since removed**) | 284B MoE, 13B active | 2×141 (41 % free; FP4 runs on slower kernels on H200); 2×96 marginal | MIT | not stated | adjustable thinking budget on EVREN (the probe finds the parameter) |
 | **Qwen3.5-397B-A17B** | ceiling — an upper bound, not a recommendation (`ceiling`) | OVHcloud | 397B MoE, 17B active | only INT4 on 2×141 (14 % free) | Apache-2.0 | not named | `enable_thinking` |
 
 EVREN's other chat models — **GLM 5.3** (753B), **DeepSeek V4.1 Flash** (763B), **MiMo V2.6 Pro** (1T) and the
@@ -73,13 +74,12 @@ What each system's thinking can be set to on *its host*, as measured — the RAG
 | gpt-oss-120b, gpt-oss-20b (OVHcloud) | yes | no (cannot be switched off) | yes — `reasoning_effort: low` | – |
 | Magistral Small 1.2 (Bedrock) | no | – | – | **no**: Mistral's reasoning prompt sent as plain text had no effect (step 0, 11 Oct); it needs `[THINK]` as special tokens — phase 6 |
 | Nemotron 3 Super (Bedrock) | no | – | – | no switch found |
-| Muse Glimmer 30B (NVIDIA) | yes | no (cannot be switched off) | yes — `reasoning_strength: low` | – |
-| Nemotron 3.5 Lightning (NVIDIA) | yes | yes — `enable_thinking: false` | **no**: `{"reasoning": {"budget": 1}}` passed the old probe rule but reasoned more than the default in the RAG smoke | – |
-| Nemotron 3.5 Super VL (NVIDIA) | yes | yes — `enable_thinking: false` (0 reasoning tokens, answers stay Turkish; probe 16 Oct) | **no**: none of 7 budget switches cut its ≈500 reasoning tokens (`thinking_budget` and a numeric `reasoning_effort` refused) | – |
 
-In the RAG battery that makes 15 EVREN systems (8 default, 6 nothink — GLM-5.3's since 19 Oct, phase 3f — GLM-5.3 think_min) and 16 hosted ones
-(OVHcloud 10, Bedrock 2, NVIDIA 4), plus Nemotron 3.5 Super VL's two (default and nothink; phase 4b, 16 Oct). One of Nemotron 3.5 Lightning's five default
-smoke answers was degenerate text — noted, one sample.
+The three models on NVIDIA's API trial are not in this table: their results are not published.
+
+In the RAG battery that makes 15 EVREN systems (8 default, 6 nothink — GLM-5.3's since 19 Oct, phase 3f — GLM-5.3
+think_min) and 12 hosted ones on OVHcloud (10) and Bedrock (2), plus the NVIDIA-trial systems, whose results are
+not published.
 
 ### Mistral: Small 4 is the current model, but out of reach; Magistral Small 1.2 represents Mistral
 
@@ -237,7 +237,7 @@ cross-family check on Opus.
 
 ## 6. The practice deployment (Track B): why OVHcloud t2-90 and Magistral Small 1.2
 
-Your OVHcloud credits cover only Volta GPUs: **t1** (V100 16 GB ×1/2/4) and **t2** (V100S 32 GB ×1/2/4). Volta has
+Our OVHcloud credits cover only Volta GPUs: **t1** (V100 16 GB ×1/2/4) and **t2** (V100S 32 GB ×1/2/4). Volta has
 **no bf16, no FP8 and no FlashAttention-2**; current vLLM releases and CUDA 13 have dropped it. So the practice run
 proves the deployment path and quality parity, **not** the speed of RTX PRO 6000 / H200.
 

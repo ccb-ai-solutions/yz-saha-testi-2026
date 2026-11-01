@@ -255,9 +255,11 @@ Plus paper tint and salt-and-pepper. The fax-like page is binarised at half reso
 parameters for each page are in `manifest.jsonl`, with image SHA-256.
 
 Regenerating the pages on another machine changes the fonts. **Use the shipped images for comparability.**
-The shipped JPEGs carry a C2PA content-credentials segment (provenance metadata added when the files were
-delivered); the pixel data are unchanged. In `manifest.jsonl`, `image_sha256` is the hash of the file as shipped
-and `image_sha256_rendered` the hash at rendering time.
+The shipped JPEGs carry a C2PA content-credentials manifest signed by Anthropic, stating that Claude provided the
+file and may have created or modified it: the pages were rendered with Claude's help (`scripts/build_ocr_pages.py`)
+and the manifest was added when the files were delivered to the measuring computer. The pixel data are unchanged,
+and the OCR runs used the files as shipped. In `manifest.jsonl`, `image_sha256` is the hash of the file as shipped
+and `image_sha256_rendered` the hash at rendering time. The charts in `docs/img/` carry the same kind of manifest.
 
 **Tesseract 5 (`tur`) sanity run, median CER:**
 
@@ -290,6 +292,11 @@ python scripts/build_asr_clips.py              # downloads FLEURS tr_tr dev (~20
 
 FLEURS is read Wikipedia speech, so this is a structural proxy for meetings. Add real meeting
 recordings with transcripts for client work (§8).
+
+**What the models heard.** The plans pin every clip by its SHA-256 (`audio_sha` in `results/**/plans/asr.jsonl`);
+clips rebuilt with the command above match all 22 (checked 31 Oct). The `asr` data hash recorded in the three ASR
+sessions (`206b75bd…`) is not that of the shipped `data/asr` (`c4df71b1…`), and we could not trace which file made
+the difference; the audio itself is pinned by the per-clip hashes.
 
 ---
 

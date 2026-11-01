@@ -2126,7 +2126,7 @@ def test_latency_configuration_hash_is_unchanged_by_the_stage_order_setting():
 
 
 def test_every_slot_runs_the_sweep_right_after_rag():
-    """16 Oct (user decision): every slot runs chat → rag → sweep → long — on 15 Oct afternoon DeepSeek-V4.1-Flash
+    """16 Oct (author's decision): every slot runs chat → rag → sweep → long — on 15 Oct afternoon DeepSeek-V4.1-Flash
     used up its 'long' budget (15 of 20 prompts in 65 min); with the sweep last, the slow-model rule would have cost it
     its sweep cells."""
     from datetime import datetime

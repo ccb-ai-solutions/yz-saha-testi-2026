@@ -188,7 +188,7 @@ models:
      thinking: {"off": {chat_template_kwargs: {enable_thinking: false}}, "on": {chat_template_kwargs: {enable_thinking: true}},
                 budget_probe: true},
      notes: "NVIDIA's newest small MoE (2026); Turkish not listed — a control like gpt-oss; thinking via chat_template_kwargs.enable_thinking; no documented budget switch, so the probe tries the generic ones"}
-  # Added 16 Oct (user suggestion; released 15 Oct): the successor of Nemotron 3 Super (on Bedrock it showed no
+  # Added 16 Oct (author's suggestion; released 15 Oct): the successor of Nemotron 3 Super (on Bedrock it showed no
   # reasoning at all), a 120B-class alternative to gpt-oss-120b. Vision-language — only its text side is tested here.
   - {id: nemotron-3.5-super-vl, endpoint: nvidia, api_model: nvidia/nemotron-3.5-super-vl-120b-a12b, task: chat,
      family: nemotron, label: "Nemotron 3.5 Super VL 120B-A12B", params_total_b: 120, params_active_b: 12,
@@ -259,7 +259,7 @@ models:
      options: {hf_id: google/embeddinggemma-2, max_length: 2048, dtype: no_fp16, query_prompt_name: SearchQuery,
                doc_prompt_name: Document, query_prefix: "task: search result | query: ", doc_prefix: "title: none | text: "},
      notes: "EmbeddingGemma 2 (6 Oct 2026, not gated): 270M text path; sentence-transformers also loads the vision/audio encoders (744M, ~3 GB fp32); 100+ languages, Turkish not named; bf16/fp32 only (fp16 gives NaN); needs current transformers"}
-  # Added 2026-10-13 (user suggestion): a Turkish distillation of EmbeddingGemma 2 — paired with its teacher above
+  # Added 2026-10-13 (author's suggestion): a Turkish distillation of EmbeddingGemma 2 — paired with its teacher above
   - {id: embeddingmagibu2-text, endpoint: local, api_model: alibayram/embeddingmagibu2-text-v1, task: local_embedding,
      family: gemma, params_total_b: 0.27, license: "Apache-2.0 (gated on Hugging Face: accept the conditions)",
      options: {hf_id: alibayram/embeddingmagibu2-text-v1, revision: 27937ea4a47e85ee443cceca35eeacb58a133d6f,

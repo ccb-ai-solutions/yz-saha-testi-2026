@@ -105,7 +105,7 @@ Dil modelleri dört yerde çalıştı:
 | [GLM-5.3](https://huggingface.co/zai-org/GLM-5.3) | EVREN | 753 / 40 | 8× H200 sınıfı sunucu |
 | [MiMo-V2.6-Pro](https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-MOPD) | EVREN | 1.020 / 42 | birden fazla sunucu |
 | [DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) | EVREN | 763 / 16 | 8× H200 sınıfı sunucu |
-| [DeepSeek-V4-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash) | EVREN | 284 / 13 | 2× H200 |
+| [DeepSeek-V4-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash) | EVREN (sonradan kaldırıldı) | 284 / 13 | 2× H200 |
 | [Qwen3.8-Flash-Next](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) | EVREN | 180 / 6 | 2× H200 (FP8) |
 | [Gemma-4-31B](https://huggingface.co/google/gemma-4-31B-it) | EVREN | 31 / 31 | tek GPU (BF16 ~61 GB) |
 | [Qwen3-VL-30B-A3B](https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct) | EVREN | 31 / 3 | tek GPU (BF16 ~62 GB) |
@@ -471,6 +471,8 @@ tests/                   birim ve uçtan uca testler
   ücretsiz döneminde kullandık.
 - Kendi test setlerimiz YZ desteğiyle hazırlandı ve kodla doğrulandı. RAG sorularının 20'sini ayrıca kaynak
   belgelerle tek tek karşılaştırdık; hepsi doğru çıktı.
+- Kod, belgeler ve görseller de Claude (Anthropic) yardımıyla hazırlandı; ölçüm tasarımı, kararlar ve kontroller
+  bize ait.
 - RAG hakemi bir Claude modeli; test edilen sistemler arasında Claude yok. Hakemi kontrol etmek için 52 cevabı,
   hangi modelin yazdığını bilmeden elle de puanladık (κ 0,65).
 - Elle puanlamayı ve RAG incelemesini Burçin Saraç yaptı; ayrıntılar
@@ -528,5 +530,7 @@ October 2026; one guard model, YTU COSMOS's, added on 30 October.
   without any API call. Re-running measurements needs keys; nothing is sent without `--yes`.
 - **Not in the public version:** EVREN's `auto` router and three models measured on NVIDIA's API trial (its terms
   allow internal evaluation only); all tables are recomputed without them.
+- **AI assistance:** our test sets, code, documents and charts were prepared with the help of Claude (Anthropic);
+  the design, decisions and checks are ours.
 
 Code: Apache-2.0. Our test data and results: CC BY 4.0. Upstream sets keep their licences (see NOTICE).
