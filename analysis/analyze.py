@@ -1401,7 +1401,7 @@ def latency_records(sessions) -> tuple[pd.DataFrame, dict, dict]:
                          "ttft_any": first_any, "e2e": res.get("t_end"), "completion_tokens": ct, "reasoning_tokens": rt,
                          "prompt_tokens": pt, "cached_tokens": cached,
                          "cached_share": (cached / pt) if (cached is not None and pt) else None,
-                         "prompt_words": r.get("prompt_words"), "decode_tps": dec, "answer_words": words,
+                         "prompt_id": r.get("prompt_id"), "prompt_words": r.get("prompt_words"), "decode_tps": dec, "answer_words": words,
                          "words_per_s": (words / (last - ttfa)) if (words and ttfa is not None and last and last > ttfa) else None,
                          "served_model": res.get("served_model"), "wall_start": res.get("wall_start"), "t_last": last,
                          "keepalive": res.get("n_keepalive"), "part": int(r.get("part") or 1)})
@@ -1507,6 +1507,55 @@ def latency_session_stops(sessions, extra: dict | None = None) -> dict:
     return out
 
 
+def tokenizer_fertility(df: pd.DataFrame, n_boot: int = 2000, seed: int = 20261104) -> tuple[pd.DataFrame, str | None]:
+    """Prompt tokens per Turkish word, compared on identical text (2026-11-04; METHODOLOGY §12).
+
+    Every model gets the same fixed RAG prompts in the latency workload (system prompt, document passages and
+    question; only the passage order changes between cycles). A prompt's tokens are the API-reported prompt_tokens,
+    the median over its requests. Only prompts that every model has, with the same word count, are used, so every row
+    counts the same text. tokens_per_word = Σ tokens / Σ words (system prompt and chat template included);
+    vs_lowest = the model's Σ tokens over those of the model with the fewest, with a 95 % bootstrap interval over
+    prompts, and the range over single prompts. v1.0.0 fitted the slope of tokens on words instead, which prompts of
+    similar length cannot pin down (DeepSeek's intercept came out negative)."""
+    d = df[(df.workload == "rag") & df.prompt_tokens.notna() & df.prompt_words.notna() & df.prompt_id.notna()]
+    if d.empty:
+        return pd.DataFrame(), None
+    d = d.assign(prompt_tokens=pd.to_numeric(d.prompt_tokens), prompt_words=pd.to_numeric(d.prompt_words))
+    per = (d.groupby(["model_id", "prompt_id"])
+             .agg(tokens=("prompt_tokens", "median"), words=("prompt_words", "median"), requests=("prompt_tokens", "size"))
+             .reset_index())
+    tok = per.pivot(index="prompt_id", columns="model_id", values="tokens").dropna()
+    wrd = per.pivot(index="prompt_id", columns="model_id", values="words").loc[tok.index]
+    same = wrd.nunique(axis=1) == 1                     # the identical text for every model
+    tok, words = tok[same], wrd[same].iloc[:, 0]
+    if len(tok) < 3:
+        return pd.DataFrame(), None
+    tpw = tok.sum() / words.sum()
+    ref = tpw.idxmin()
+    t = tok.to_numpy(dtype=float)
+    boot = t[np.random.default_rng(seed).integers(0, len(t), size=(n_boot, len(t)))].sum(axis=1)
+    j = list(tok.columns).index(ref)
+    lo, hi = np.percentile(boot / boot[:, [j]], [2.5, 97.5], axis=0)
+    single = tok.div(tok[ref], axis=0)
+    reqs = per[per.prompt_id.isin(tok.index)].groupby("model_id")["requests"].sum()
+    out = pd.DataFrame({"model_id": list(tok.columns), "tokens_per_word": tpw.to_numpy(),
+                        "vs_lowest": (tok.sum() / tok[ref].sum()).to_numpy(), "vs_lowest_ci_lo": lo,
+                        "vs_lowest_ci_hi": hi, "single_prompt_min": single.min().to_numpy(),
+                        "single_prompt_max": single.max().to_numpy(), "prompts": len(tok), "words": int(words.sum()),
+                        "requests": reqs.reindex(tok.columns).to_numpy()})
+    out = out.sort_values("tokens_per_word", kind="stable").reset_index(drop=True)
+    note = "\n".join([
+        f"The same {len(tok)} RAG prompts for every model ({int(words.min())}–{int(words.max())} words each: system "
+        "prompt, document passages, question); prompt tokens as reported by the API, median over a prompt's requests.",
+        "tokens_per_word = Σ prompt tokens / Σ words over these prompts (system prompt and chat template included).",
+        f"vs_lowest = the model's prompt tokens over {ref}'s on the identical prompts, with a 95 % bootstrap interval "
+        "over prompts (they share some passages, so it is on the narrow side); single_prompt_min / max = the range over "
+        "single prompts.",
+        "Corrected on 2026-11-04 (METHODOLOGY §12): v1.0.0 showed the regression slope of tokens on words here; over "
+        "prompts of similar length the slope was not stable."])
+    return out, note
+
+
 def analyze_latency(sessions, slo_ttft=1.0, slo_tpot_ms=50.0) -> dict:
     df, excluded, notes = latency_records(sessions)
     if df.empty:
@@ -1596,20 +1645,13 @@ def analyze_latency(sessions, slo_ttft=1.0, slo_tpot_ms=50.0) -> dict:
     summary = pd.DataFrame(summ_rows)
     c1u = df[(df.stage == "c1") & df["usable"]]
     by_slot = c1u.groupby(["variant", "workload", "slot"])["ttft_answer"].median().unstack().reset_index() if not c1u.empty else pd.DataFrame()
-    fert_rows = []
-    for mid, g in df[(df.workload == "rag") & df.prompt_tokens.notna() & df.prompt_words.notna()].groupby("model_id"):
-        x, y = g["prompt_words"].astype(float).to_numpy(), g["prompt_tokens"].astype(float).to_numpy()
-        if len(set(x)) >= 3:
-            slope, intercept = np.polyfit(x, y, 1)
-            fert_rows.append({"model_id": mid, "tokens_per_word (slope)": float(slope), "fixed_overhead_tokens": float(intercept),
-                              "n": len(g)})
-    fertility = pd.DataFrame(fert_rows).sort_values("tokens_per_word (slope)") if fert_rows else pd.DataFrame()
+    fertility, fertility_note = tokenizer_fertility(df)
     warm = df[df.stage == "warmup"].sort_values("wall_start")
     cold = warm.groupby(["session", "variant"]).head(1)[["session", "variant", "outcome", "ttft_any", "e2e"]].rename(
         columns={"ttft_any": "cold_first_token_s", "e2e": "cold_e2e_s"})
     served = df.groupby("variant")["served_model"].agg(          # NaN = a request without an answer (e.g. a 503)
         lambda s: ", ".join(sorted({x for x in s if isinstance(x, str) and x}))).reset_index()
-    return {"per_session": agg, "summary": summary, "by_slot": by_slot, "fertility": fertility, "served": served,
+    return {"per_session": agg, "summary": summary, "by_slot": by_slot, "fertility": fertility, "fertility_note": fertility_note, "served": served,
             "cold_start": cold, "excluded_sessions": excluded, "not_comparable": not_comparable,
             "stopped_early": latency_session_stops(sessions, notes), "df": df}
 
@@ -1850,6 +1892,20 @@ def _place_labels(ax, anchors, labels, obstacles=(), fontsize=8.5) -> None:
         taken.append(box)
 
 
+def fertility_chart(fert: pd.DataFrame, footer: str):
+    """Tokens per Turkish word on identical prompts; each bar labelled with its excess over the lowest."""
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots(figsize=(7, 3.6))
+    ax.barh(fert["model_id"], fert["tokens_per_word"], color="#4a7ab5")
+    for i, (v, r) in enumerate(zip(fert["tokens_per_word"], fert["vs_lowest"])):
+        ax.text(v + 0.03, i, f"{v:.2f}" + (f"  (+{100 * (r - 1):.0f} %)" if r > 1.005 else ""), va="center", fontsize=8)
+    ax.set_xlim(0, float(fert["tokens_per_word"].max()) * 1.25)
+    ax.set_xlabel(f"prompt tokens per Turkish word (the same {int(fert['prompts'].iloc[0])} RAG prompts for every model)")
+    ax.set_title("Turkish token tax by tokenizer (API-reported prompt tokens)")
+    chart_footer(fig, footer)
+    return fig
+
+
 def make_charts(out: Path, results: dict, footer: str) -> dict:
     import matplotlib
     matplotlib.use("Agg")
@@ -1944,12 +2000,7 @@ def make_charts(out: Path, results: dict, footer: str) -> dict:
             imgs["concurrency"] = save_fig(fig, out / "charts" / "latency_vs_concurrency.png")
         fert = lat.get("fertility")
         if fert is not None and not fert.empty:
-            fig, ax = plt.subplots(figsize=(7, 3.6))
-            ax.barh(fert["model_id"], fert["tokens_per_word (slope)"], color="#4a7ab5")
-            ax.set_xlabel("prompt tokens per Turkish word (regression slope over the same RAG prompts)")
-            ax.set_title("Turkish token tax by tokenizer (API-reported prompt tokens)")
-            chart_footer(fig, footer)
-            imgs["fertility"] = save_fig(fig, out / "charts" / "tokenizer_fertility.png")
+            imgs["fertility"] = save_fig(fertility_chart(fert, footer), out / "charts" / "tokenizer_fertility.png")
         modes = s_all[(s_all.workload == "rag") & (s_all.concurrency == 1)]
         multi = modes.assign(model=modes.variant.str.split(":").str[0]).groupby("model")["variant"].nunique()
         mm = multi[multi > 1].index.tolist()
@@ -2301,7 +2352,7 @@ def write_report(out: Path, results: dict, sessions: list[Path], imgs: dict, mat
                 H.append(f"<img src='data:image/png;base64,{imgs[k]}'/>")
         sub("latency summary", lat["summary"], 3)
         sub("latency by time slot (TTF-answer p50, c=1)", lat["by_slot"], 3)
-        sub("tokenizer fertility (prompt tokens per word)", lat["fertility"], 3)
+        sub("tokenizer fertility (prompt tokens per word)", lat["fertility"], 3, note=lat.get("fertility_note"))
         sub("cold start (first warm-up request per session)", lat["cold_start"], 3)
         sub("served models (from responses)", lat["served"])
         sub("latency per session (raw cells)", lat["per_session"], 3)

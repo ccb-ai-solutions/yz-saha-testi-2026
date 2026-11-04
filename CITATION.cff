@@ -13,8 +13,8 @@ authors:
     website: "https://ccb-ai.com"
   - family-names: "Saraç"
     given-names: "Burçin"
-version: "1.0.0"
-date-released: "2026-11-02"
+version: "1.0.1"
+date-released: "2026-11-04"
 license:
   - Apache-2.0
   - CC-BY-4.0
